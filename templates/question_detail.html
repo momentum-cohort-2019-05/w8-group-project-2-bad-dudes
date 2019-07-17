@@ -20,6 +20,9 @@
     {% for answer in question.answer_set.all %}
     <hr>
     <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}</p>
+    {% if question.author == request.user %}
+        <a href="">Mark Answer as Correct</a>
+    {% endif %}
     {% endfor %}
 {% else %}
     <p>There are no answers for this question.</p>
