@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from core.models import Question, Answer, Favorite
+from django.contrib.auth.decorators import login_required
+from core.forms import QuestionCreateForm
+
 
 # Create your views here.
 
-from core.models import Question, Answer, Favorite
 
 def index(request):
     """View function for home page of site."""
@@ -25,3 +28,22 @@ def question_detail(request,pk):
         'question' : question,
 
     })
+
+@login_required
+def add_question(request):
+    """adds a question authored by the pk of the user"""
+    # breakpoint()
+    if request.method == 'POST':
+        form = QuestionCreateForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            new_question = Question(author=request.user,content=content,title=title)
+            new_question.save()
+        return redirect(to='home')
+    else:
+        form = QuestionCreateForm()
+
+        return render(request, 'core/new-question.html', {
+            'form' : form,
+        })
