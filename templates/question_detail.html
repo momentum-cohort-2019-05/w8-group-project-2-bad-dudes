@@ -2,6 +2,6 @@
 
 {% block content %}
 <h1>{{ question.title }}</h1>
-<p>{{ question.content }}</p>
+<p>{{ question.content |safe }}</p>
 <h2>Answers:</h2>
 {% endblock %}
