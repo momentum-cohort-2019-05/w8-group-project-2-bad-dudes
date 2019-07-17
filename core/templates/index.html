@@ -1,11 +1,17 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Local Library Home</h1>
-  <p>Welcome to LocalLibrary, a website developed by <em>Mozilla Developer Network</em>!</p>
-  <h2>Dynamic content</h2>
-  <p>The library has the following record counts:</p>
-  <ul>
-    <li><strong>Questions:</strong> {{ num_questions }}</li>
-  </ul>
+<h1>Question Box</h1>
+<p>Welcome to the Question Box, where you have questions and we (hopefully) have the answers!</p>
+<h2>All Questions:</h2>
+
+{% if question_list %}
+    {% for question in question_list %}
+    <div>
+        <a href="{{question.get_absolute_url}}"><strong>{{ question.title }}</strong></a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>There are no questions.</p>
+{% endif %}
 {% endblock %}

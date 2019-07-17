@@ -8,11 +8,20 @@ def index(request):
     """View function for home page of site."""
 
     # Generate counts of some of the main objects
-    num_questions = Question.objects.all().count()
+    question_list = Question.objects.all()
     
     context = {
-        'num_questions': num_questions,
+        'question_list': question_list,
     }
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+
+def question_detail(request,pk):
+    question = Question.objects.get(pk=pk)
+
+    return render(request, 'core/question_detail.html', {
+        'question' : question,
+
+    })
