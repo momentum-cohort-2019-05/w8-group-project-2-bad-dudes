@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from django.urls import reverse
 
 # Create your models here.
 
@@ -17,6 +18,9 @@ class Question (models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+    def get_absolute_url(self):
+        return reverse('question-detail', args=[str(self.id)])
 
 
 class Answer (models.Model):
