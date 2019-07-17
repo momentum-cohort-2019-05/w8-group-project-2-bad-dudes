@@ -24,7 +24,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-  
 ]
 
 # Use include() to add paths from the catalog application 
@@ -33,6 +32,7 @@ urlpatterns = [
 urlpatterns += [
     path('core/', include('core.urls')),
     path('', RedirectView.as_view(url='/core/', permanent=True)),
+    path('accounts/', include('registration.backends.default.urls')),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)
