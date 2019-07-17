@@ -24,7 +24,7 @@ def index(request):
 def question_detail(request,pk):
     question = Question.objects.get(pk=pk)
 
-    return render(request, 'core/question_detail.html', {
+    return render(request, 'question_detail.html', {
         'question' : question,
 
     })
@@ -44,6 +44,6 @@ def add_question(request):
     else:
         form = QuestionCreateForm()
 
-        return render(request, 'core/new-question.html', {
+        return render(request, 'new-question.html', {
             'form' : form,
         })
