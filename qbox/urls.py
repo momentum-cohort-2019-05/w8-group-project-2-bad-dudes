@@ -33,7 +33,10 @@ urlpatterns += [
     path('index/', views.index, name='home'),
     path('accounts/', include('registration.backends.default.urls')),
     path('question-detail/<int:pk>', views.question_detail, name='question-detail'),
+    path('question-detail/<int:pk>/new-answer', views.add_answer, name='new-answer'),
+    path('new-question/', views.add_question, name='new-question'),
     path('core/new-question/', views.add_question, name='new-question'),
+
 ]
 
 # Use static() to add url mapping to serve static files during development (only)

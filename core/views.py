@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from core.models import Question, Answer, Favorite
 from django.contrib.auth.decorators import login_required
-from core.forms import QuestionCreateForm
+from core.forms import QuestionCreateForm, AnswerCreateForm
+from django.shortcuts import get_object_or_404
 import markdown
 import bleach
 from bleach_whitelist import markdown_tags, markdown_attrs
-
 
 
 
@@ -53,4 +53,24 @@ def add_question(request):
 
         return render(request, 'new-question.html', {
             'form' : form,
+        })
+
+@login_required
+def add_answer(request, pk):
+    """adds a question authored by the pk of the user"""
+    target_question = get_object_or_404(Question, pk=pk)
+
+    if request.method == 'POST':
+        form = AnswerCreateForm(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data['content']
+            new_answer = Answer(author=request.user,content=content, target_question=target_question)
+            new_answer.save()
+        return redirect(to='home')
+    else:
+        form = AnswerCreateForm()
+
+        return render(request, 'new-answer.html', {
+            'form' : form,
+            'target_question': target_question
         })
