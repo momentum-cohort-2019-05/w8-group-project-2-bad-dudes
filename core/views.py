@@ -3,6 +3,9 @@ from core.models import Question, Answer, Favorite
 from django.contrib.auth.decorators import login_required
 from core.forms import QuestionCreateForm, AnswerCreateForm
 from django.shortcuts import get_object_or_404
+import markdown
+import bleach
+from bleach_whitelist import markdown_tags, markdown_attrs
 
 
 
@@ -40,6 +43,8 @@ def add_question(request):
         if form.is_valid():
             title = form.cleaned_data['title']
             content = form.cleaned_data['content']
+            content = markdown.markdown(content)
+            content = bleach.clean(content, markdown_tags, markdown_attrs)
             new_question = Question(author=request.user,content=content,title=title)
             new_question.save()
         return redirect(to='home')
