@@ -11,6 +11,14 @@
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
       </head>
       <body>
+        <div id="account-menu" class="tr">
+            {% if request.user.is_authenticated %}
+              <p>Hi {{request.user}}</p>
+              <a class="washed-blue" href="">Profile</a> | <a class="washed-blue" href="{% url 'auth_logout' %}">Logout</a>
+            {% else %}
+              <a class="washed-blue" href="{% url 'auth_login' %}">Login</a> | <a class="washed-blue" href="{% url 'registration_register' %}">Register</a>
+            {% endif %}
+          </div>
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-2">
