@@ -12,6 +12,7 @@ django-registration-redux = "*"
 django-heroku = "*"
 gunicorn = "*"
 markdown = "*"
+bleach = "*"
 
 [requires]
 python_version = "3.7"

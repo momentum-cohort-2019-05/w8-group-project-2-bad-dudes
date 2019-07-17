@@ -3,6 +3,7 @@ from core.models import Question, Answer, Favorite
 from django.contrib.auth.decorators import login_required
 from core.forms import QuestionCreateForm
 import markdown
+import bleach
 
 
 
@@ -41,6 +42,7 @@ def add_question(request):
             title = form.cleaned_data['title']
             content = form.cleaned_data['content']
             content = markdown.markdown(content)
+            content = bleach.clean(content)
             new_question = Question(author=request.user,content=content,title=title)
             new_question.save()
         return redirect(to='home')
