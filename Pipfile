@@ -12,6 +12,7 @@ django-registration-redux = "*"
 django-heroku = "*"
 gunicorn = "*"
 django-allauth = "*"
+lock = "*"
 
 [requires]
 python_version = "3.7"
