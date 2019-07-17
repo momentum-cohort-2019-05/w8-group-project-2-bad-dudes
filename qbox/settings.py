@@ -131,3 +131,7 @@ EMAIL_HOST = EMAIL_HOST
 EMAIL_HOST_USER = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 EMAIL_PORT = EMAIL_PORT
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
