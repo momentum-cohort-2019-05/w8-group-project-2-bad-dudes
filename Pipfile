@@ -15,5 +15,9 @@ markdown = "*"
 bleach-whitelist = "*"
 bleach = "*"
 
+django-allauth = "*"
+lock = "*"
+
+
 [requires]
 python_version = "3.7"
