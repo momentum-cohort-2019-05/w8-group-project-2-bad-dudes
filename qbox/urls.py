@@ -30,7 +30,7 @@ urlpatterns = [
 
 urlpatterns += [
     path('', RedirectView.as_view(url='index/')),
-    path('index/', views.index, name='index'),
+    path('index/', views.index, name='home'),
     path('accounts/', include('registration.backends.default.urls')),
     path('question-detail/<int:pk>', views.question_detail, name='question-detail'),
 ]
