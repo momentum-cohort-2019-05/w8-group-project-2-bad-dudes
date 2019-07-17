@@ -1,7 +1,27 @@
 {% extends "base.html" %}
+{% load static %}
+
+
+
+
 
 {% block content %}
 <h1>{{ question.title }}</h1>
 <p>{{ question.content }}</p>
 <h2>Answers:</h2>
+
+{% if request.user.is_authenticated %}
+    <a href="{% url 'new-answer' question.pk %}">Add an answer</a>
+{% else %}
+    <p>You need to <a class="washed-blue" href="{% url 'auth_login' %}">login to your account</a> in order to submit an answer.</p>
+{% endif %}
+
+    {% if question.answer_set.all %}
+    {% for answer in question.answer_set.all %}
+    <hr>
+    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}</p>
+    {% endfor %}
+{% else %}
+    <p>There are no answers for this question.</p>
+{% endif %}
 {% endblock %}
