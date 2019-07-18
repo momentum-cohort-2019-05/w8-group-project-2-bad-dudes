@@ -12,7 +12,10 @@ for (button of make_correct_buttons){
         fetch(postMarkCorrect( questionPk, answerPk ))
         .then (response => response.json())
         .then (function (data){
-            console.log(data)
+            document.querySelector(`#answer-${answerPk}`).innerText = "CORRECT ANSWER"
+            if (data.previous_correct_answer_pk) {
+                document.querySelector(`#answer-${data.previous_correct_answer_pk}`).innerText = "Mark Answer as Correct"
+            }
         })
     })
 }
@@ -41,6 +44,8 @@ function postMarkCorrect (questionPk, answerPk){
         },
         body: JSON.stringify({ 'questionPk': questionPk, 'answerPk': answerPk })
     })
+
+
 }
 
 // function postCardResults (cardPk, correct) {

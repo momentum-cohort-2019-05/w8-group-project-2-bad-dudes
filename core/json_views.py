@@ -18,19 +18,17 @@ def post_mark_correct(request, question_pk, answer_pk):
     # card.record_result(req_data['correct'], request.user)
     question = get_object_or_404(Question, pk=question_pk)
     correct_answer = get_object_or_404(Answer, pk=answer_pk)
-   
-    if question.correct_answer:
-        question.correct_answer = None
+    try:
+        previous_correct_answer_pk = question.correct_answer.pk
+    except:
+        previous_correct_answer_pk = None
+    if request.user == question.author:
+        if previous_correct_answer_pk:
+            question.correct_answer = None
+        question.correct_answer = correct_answer
+        question.save()
 
-    question.correct_answer = correct_answer
-    question.save()
-
-    if request.user.is_authenticated:
-        pass
-    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-    print(f"{req_data}")
-
-    return JsonResponse({"question": req_data['questionPk'], "answer": req_data['answerPk']})
+    return JsonResponse({"question": req_data['questionPk'], "previous_correct_answer_pk": previous_correct_answer_pk})
 
 # @require_http_methods(['POST'])
 # def post_card_results(request, card_pk):
