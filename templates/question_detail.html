@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block head %}
+    <script src="{% static 'qbox.js' %}" defer></script>
+{% endblock %}
 
 
 
@@ -21,7 +23,7 @@
     <hr>
     <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}</p>
     {% if question.author == request.user %}
-        <a href="">Mark Answer as Correct</a>
+        <button class="makeCorrectLink" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Mark Answer as Correct</button>
     {% endif %}
     {% endfor %}
 {% else %}

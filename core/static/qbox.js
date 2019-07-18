@@ -2,6 +2,21 @@
 
 const Cookies = require('js-cookie')
 
+let make_correct_buttons = document.querySelectorAll('.makeCorrectLink')
+for (button of make_correct_buttons){
+    button.addEventListener('click', function(event){
+        const answerPk = event.target.dataset.answerpk
+        const questionPk = event.target.dataset.questionpk
+        fetch(postMarkCorrect( questionPk, answerPk ))
+        .then (response => response.json())
+        .then (function (data){
+            console.log(data)
+        })
+    })
+}
+
+
+
 // function getRandomCard (stackPk) {
 //   return new Request(`/json/stacks/${stackPk}/random-card/`, { 'credentials': 'include' })
 // }
@@ -10,7 +25,7 @@ const Cookies = require('js-cookie')
 //   return new Request(`/json/vocab/word/`, { 'credentials': 'include' })
 // }
 
-function markCorrect (questionPk, answerPk){
+function postMarkCorrect (questionPk, answerPk){
     const csrftoken = Cookies.get('csrftoken')
     return new Request(`/json/mark-correct/${questionPk}/${answerPk}`, {
         credentials: 'include',
