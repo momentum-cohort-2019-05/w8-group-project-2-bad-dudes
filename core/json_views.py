@@ -12,10 +12,14 @@ def post_mark_correct(request, question_pk, answer_pk):
     of the answer they chose as correct, store that correct, remove the previous
     correct answer (if any) and reply
     """
+
     req_data = json.loads(request.body.decode("UTF-8"))
     if request.user.is_authenticated:
         pass
-    return JsonResponse({"question":req_data['question'], "answer":req_data['answer']})
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    print(f"{req_data}")
+
+    return JsonResponse({"question": req_data['questionPk'], "answer": req_data['answerPk']})
 
 # @require_http_methods(['POST'])
 # def post_card_results(request, card_pk):
