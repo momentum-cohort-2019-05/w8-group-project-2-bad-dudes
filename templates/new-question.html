@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+<br> 
+<h3>
+    Create your new question here. 
+</h3>
 <form action="{% url 'new-question' %}" method="POST">
     {% csrf_token %}
+    <br>
+    <h5>Question Title</h5>
     <input type="text" name="{{ form.title.html_name }}"></input>
     <br>
     <br>
+    <h5>Question Content</h5>
     <textarea cols="40" rows="5" name="{{ form.content.html_name }}"></textarea>
     <br>
     <br>
