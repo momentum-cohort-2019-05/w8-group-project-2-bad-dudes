@@ -13,7 +13,7 @@
 {% if request.user.is_authenticated %}
     <a href="{% url 'new-answer' question.pk %}">Add an answer</a>
 {% else %}
-    <p>You need to <a class="washed-blue" href="{% url 'auth_login' %}">login to your account</a> in order to submit an answer.</p>
+    <p>You need to <a class="washed-blue" href="{% url 'account_login' %}">login to your account</a> in order to submit an answer.</p>
 {% endif %}
 
     {% if question.answer_set.all %}
