@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
-from core import views
+from core import views, json_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -36,7 +36,11 @@ urlpatterns += [
     path('question-detail/<int:pk>/new-answer', views.add_answer, name='new-answer'),
     path('new-question/', views.add_question, name='new-question'),
     path('core/new-question/', views.add_question, name='new-question'),
+]
 
+urlpatterns += [
+    path('json/mark-correct/<int:question_pk>/<int:answer_pk>/',
+        json_views.post_mark_correct, name="json_post_mark_correct"),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block head %}
 <script src="{% static 'compiled.js' %}" defer></script>
 {% endblock %}
@@ -21,6 +22,9 @@
     {% for answer in question.answer_set.all %}
     <hr>
     <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}</p>
+    {% if question.author == request.user %}
+        <button class="makeCorrectLink" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Mark Answer as Correct</button>
+    {% endif %}
     {% endfor %}
 {% else %}
     <p>There are no answers for this question.</p>
