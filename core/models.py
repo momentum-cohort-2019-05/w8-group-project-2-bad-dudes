@@ -43,6 +43,6 @@ class Favorite (models.Model):
 
     def __str__ (self):
         if self.answer:
-            return f"{self.user}|{self.question.title}|{self.answer[:25]}"
+            return f"{self.user}|{self.question.title}|{self.answer.content[:25]}"
         else:
             return f"{self.user}|{self.question.title}"

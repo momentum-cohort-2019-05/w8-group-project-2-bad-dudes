@@ -14,8 +14,6 @@ def post_mark_correct(request, question_pk, answer_pk):
     """
 
     req_data = json.loads(request.body.decode("UTF-8"))
-    # card = get_object_or_404(Card, pk=card_pk)
-    # card.record_result(req_data['correct'], request.user)
     question = get_object_or_404(Question, pk=question_pk)
     correct_answer = get_object_or_404(Answer, pk=answer_pk)
     try:
@@ -48,6 +46,46 @@ def post_answer (request, question_pk):
     
     
     return JsonResponse({"question": req_data['questionPk'], "answerInput": req_data['answerInput'], "answer": 5})
+@login_required
+@require_http_methods(['POST'])
+def post_fav_answer(request, answer_pk):
+    """
+    Given a JSON request containing a answer pk from a user, store that favorite
+    and reply. If the answer is already favorited, remove it. Return a JSON response
+    containing a bool 'removed' that's true if the old_fav was deleted and false
+    if a new favorite was created
+    """
+    # see if there's an existing favorite that matches the request
+    answer = get_object_or_404(Answer, pk=answer_pk)
+    removed = False
+    old_fav = Favorite.objects.filter(user=request.user).filter(answer=answer).first()
+    if old_fav:
+        old_fav.delete()
+        removed = True
+    else:
+        user = request.user
+        question = answer.target_question
+        new_favorite = Favorite(user=user, question=question, answer=answer)
+        new_favorite.save()
+
+    return JsonResponse({'removed': removed})
+
+@login_required
+@require_http_methods(['POST'])
+def post_fav_question(request, question_pk):
+    question = get_object_or_404(Question, pk=question_pk)
+    removed = False
+    old_fav = Favorite.objects.filter(user=request.user).filter(question=question).filter(answer=None).first()
+    if old_fav:
+        old_fav.delete()
+        removed = True
+    else:
+        user = request.user
+        answer = None
+        new_favorite = Favorite(user=user, question=question, answer=answer)
+        new_favorite.save()
+
+    return JsonResponse({'removed': removed})
 
 
 # @require_http_methods(['POST'])
