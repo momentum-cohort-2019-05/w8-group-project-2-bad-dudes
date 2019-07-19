@@ -29,11 +29,16 @@ def index(request):
 def question_detail(request,pk):
     question = Question.objects.get(pk=pk)
     question_is_favorited = False
+    favorited_answer_pk_list = []
+    for fav in Favorite.objects.filter(user=request.user, question=question).all():
+        if fav.answer:
+            favorited_answer_pk_list.append(fav.answer.pk)
     if Favorite.objects.filter(user=request.user).filter(question=question).filter(answer=None).first():
         question_is_favorited = True
     return render(request, 'question_detail.html', {
         'question' : question,
         'question_is_favorited' : question_is_favorited,
+        'favorited_answer_pk_list' : favorited_answer_pk_list,
     })
 
 @login_required

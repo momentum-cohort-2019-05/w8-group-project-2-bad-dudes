@@ -32,7 +32,11 @@
     <hr>
     <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}} {% if question.correct_answer == answer %}<b>CORRECT ANSWER</b>{% endif %}</p></p>
     {% if request.user.is_authenticated %}
-    <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">Mark Answer as Favorite</button><br>
+        {% if answer.pk in favorited_answer_pk_list %}
+            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">Favorited (Click to Remove)</button><br>
+        {% else %}
+            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">Mark Answer as Favorite</button><br>
+        {% endif %}
     {% endif %}
     {% if question.author == request.user %}
         {% if question.correct_answer != answer %}
