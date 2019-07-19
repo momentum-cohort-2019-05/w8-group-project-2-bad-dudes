@@ -41,6 +41,10 @@ urlpatterns += [
 urlpatterns += [
     path('json/mark-correct/<int:question_pk>/<int:answer_pk>/',
         json_views.post_mark_correct, name="json_post_mark_correct"),
+    path('json/fav-answer/<int:answer_pk>/',
+        json_views.post_fav_answer, name="json_post_fav_answer"),
+    path('json/fav-question/<int:question_pk>/',
+        json_views.post_fav_question, name="json_post_fav_question"),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)

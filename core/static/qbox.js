@@ -2,21 +2,82 @@
 
 const Cookies = require('js-cookie')
 
-let make_correct_buttons = document.querySelectorAll('.makeCorrectLink')
-for (button of make_correct_buttons){
-    button.addEventListener('click', function(event){
-        console.log(event)
-        // console.log("they're watching")
-        const answerPk = event.target.dataset.answerpk
+correctButtons()
+favoriteButtons()
+
+function correctButtons(){
+    let make_correct_buttons = document.querySelectorAll('.makeCorrectLink')
+    for (button of make_correct_buttons){
+        button.addEventListener('click', function(event){
+            const answerPk = event.target.dataset.answerpk
+            const questionPk = event.target.dataset.questionpk
+            fetch(postMarkCorrect( questionPk, answerPk ))
+            .then (response => response.json())
+            .then (function (data){
+                document.querySelector(`#answer-${answerPk}`).innerText = "CORRECT ANSWER (Click to remove)"
+                if (data.previous_correct_answer_pk) {
+                    document.querySelector(`#answer-${data.previous_correct_answer_pk}`).innerText = "Mark Answer as Correct"
+                }
+            })
+        })
+    }
+}
+
+function favoriteButtons(){
+    const q_fav_button = document.querySelector('#q-fav-button')
+    q_fav_button.addEventListener('click', function(event){
         const questionPk = event.target.dataset.questionpk
-        fetch(postMarkCorrect( questionPk, answerPk ))
+        fetch(postFavQuestion( questionPk ))
         .then (response => response.json())
         .then (function (data){
-            document.querySelector(`#answer-${answerPk}`).innerText = "CORRECT ANSWER (Click to remove)"
-            if (data.previous_correct_answer_pk) {
-                document.querySelector(`#answer-${data.previous_correct_answer_pk}`).innerText = "Mark Answer as Correct"
+            if (data.removed){
+                document.querySelector(`#q-fav-button`).innerText = "Mark Question as Favorite"
+            } else{
+                document.querySelector(`#q-fav-button`).innerText = "Favorited (Click to Remove)"
             }
         })
+    })
+    
+    const a_fav_buttons = document.querySelectorAll('.a-fav-button')
+    for (button of a_fav_buttons){
+        button.addEventListener('click', function(event){
+            const answerPk = event.target.dataset.answerpk
+            fetch(postFavAnswer( answerPk ))
+            .then (response => response.json())
+            .then (function (data){
+                if (data.removed){
+                    document.querySelector(`#fav-${ answerPk }`).innerText = "Mark Answer as Favorite"
+                } else {
+                    document.querySelector(`#fav-${ answerPk }`).innerText = "Favorited (Click to Remove)"
+                }
+            })
+        })
+    }
+
+}
+
+function postFavAnswer( answerPk ){
+    const csrftoken = Cookies.get('csrftoken')
+
+    return new Request(`/json/fav-answer/${answerPk}/`, {
+        credentials: 'include',
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify({ 'answerPk': answerPk })
+    })
+}
+
+function postFavQuestion( questionPk ){
+    const csrftoken = Cookies.get('csrftoken')
+    return new Request(`/json/fav-question/${questionPk}/`, {
+        credentials: 'include',
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify({ 'questionPk': questionPk })
     })
 }
 
@@ -32,9 +93,6 @@ for (button of make_correct_buttons){
 
 function postMarkCorrect (questionPk, answerPk){
     const csrftoken = Cookies.get('csrftoken')
-    // console.log(`csrftoken: ${csrftoken}`)
-    // console.log(`questionPk: ${questionPk}`)
-    // console.log(`answerPk: ${answerPk}`)
 
     return new Request(`/json/mark-correct/${questionPk}/${answerPk}/`, {
         credentials: 'include',
