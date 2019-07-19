@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from core.models import Question, Answer, Favorite
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -35,8 +35,20 @@ def post_mark_correct(request, question_pk, answer_pk):
             question.correct_answer = None
         question.correct_answer = correct_answer
         question.save()
-  
+    
     return JsonResponse({"question": req_data['questionPk'], "previous_correct_answer_pk": previous_correct_answer_pk})
+
+
+@require_http_methods(['POST'])
+def post_answer (request, question_pk):
+    req_data = json.loads(request.body.decode("UTF-8"))
+    question = get_object_or_404(Question, pk=question_pk)
+    new_answer = Answer(author=request.user, content=req_data['answerInput'], target_question=question)
+    new_answer.save()
+    
+    
+    return JsonResponse({"question": req_data['questionPk'], "answerInput": req_data['answerInput'], "answer": 5})
+
 
 # @require_http_methods(['POST'])
 # def post_card_results(request, card_pk):
