@@ -12,7 +12,7 @@ for (button of make_correct_buttons){
         fetch(postMarkCorrect( questionPk, answerPk ))
         .then (response => response.json())
         .then (function (data){
-            document.querySelector(`#answer-${answerPk}`).innerText = "CORRECT ANSWER"
+            document.querySelector(`#answer-${answerPk}`).innerText = "CORRECT ANSWER (Click to remove)"
             if (data.previous_correct_answer_pk) {
                 document.querySelector(`#answer-${data.previous_correct_answer_pk}`).innerText = "Mark Answer as Correct"
             }
