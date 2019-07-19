@@ -20,8 +20,11 @@
 
     {% if question.answer_set.all %}
     {% for answer in question.answer_set.all %}
+
+    
     <hr>
-    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}</p>
+    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}} {% if question.correct_answer == answer %}<b>CORRECT ANSWER</b>{% endif %}</p></p>
+   
     {% if question.author == request.user %}
         {% if question.correct_answer != answer %}
             <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Mark Answer as Correct</button>
