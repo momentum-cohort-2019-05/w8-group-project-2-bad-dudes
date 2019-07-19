@@ -14,8 +14,6 @@ def post_mark_correct(request, question_pk, answer_pk):
     """
 
     req_data = json.loads(request.body.decode("UTF-8"))
-    # card = get_object_or_404(Card, pk=card_pk)
-    # card.record_result(req_data['correct'], request.user)
     question = get_object_or_404(Question, pk=question_pk)
     correct_answer = get_object_or_404(Answer, pk=answer_pk)
     try:
@@ -29,6 +27,38 @@ def post_mark_correct(request, question_pk, answer_pk):
         question.save()
 
     return JsonResponse({"question": req_data['questionPk'], "previous_correct_answer_pk": previous_correct_answer_pk})
+
+@login_required
+@require_http_methods(['POST'])
+def post_fav_answer(request, answer_pk):
+    """
+    Given a JSON request containing a answer pk from a user, store that favorite
+    and reply
+    """
+    user = request.user
+    answer = get_object_or_404(Answer, pk=answer_pk)
+    question = answer.target_question
+    new_favorite = Favorite(user=user, question=question, answer=answer)
+    new_favorite.save()
+
+    return JsonResponse({})
+
+@require_http_methods(['POST'])
+def post_fav_question(request, question_pk):
+    """
+    DOC string
+    """
+    # breakpoint()
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!post_fav!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    req_data = json.loads(request.body.decode("UTF-8"))
+    user = request.user
+    answer = None
+    question = get_object_or_404(Question, pk=question_pk)
+    new_favorite = Favorite(user=user, question=question, answer=answer)
+    new_favorite.save()
+
+    return JsonResponse({"question": req_data['questionPk']})
+
 
 # @require_http_methods(['POST'])
 # def post_card_results(request, card_pk):
