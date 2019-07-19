@@ -46,14 +46,14 @@ def post_fav_answer(request, answer_pk):
     if a new favorite was created
     """
     # see if there's an existing favorite that matches the request
+    answer = get_object_or_404(Answer, pk=answer_pk)
     removed = False
-    old_fav = Favorite.objects.filter(user=request.user).filter(answer=(Answer.objects.get(pk=answer_pk))).first()
+    old_fav = Favorite.objects.filter(user=request.user).filter(answer=answer).first()
     if old_fav:
         old_fav.delete()
         removed = True
     else:
         user = request.user
-        answer = get_object_or_404(Answer, pk=answer_pk)
         question = answer.target_question
         new_favorite = Favorite(user=user, question=question, answer=answer)
         new_favorite.save()
@@ -63,15 +63,19 @@ def post_fav_answer(request, answer_pk):
 @login_required
 @require_http_methods(['POST'])
 def post_fav_question(request, question_pk):
-    # breakpoint()
-    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!post_fav!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    user = request.user
-    answer = None
     question = get_object_or_404(Question, pk=question_pk)
-    new_favorite = Favorite(user=user, question=question, answer=answer)
-    new_favorite.save()
+    removed = False
+    old_fav = Favorite.objects.filter(user=request.user).filter(question=question).filter(answer=None).first()
+    if old_fav:
+        old_fav.delete()
+        removed = True
+    else:
+        user = request.user
+        answer = None
+        new_favorite = Favorite(user=user, question=question, answer=answer)
+        new_favorite.save()
 
-    return JsonResponse({})
+    return JsonResponse({'removed': removed})
 
 
 # @require_http_methods(['POST'])

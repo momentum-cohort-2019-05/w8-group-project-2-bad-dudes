@@ -29,9 +29,12 @@ function favoriteButtons(){
         const questionPk = event.target.dataset.questionpk
         fetch(postFavQuestion( questionPk ))
         .then (response => response.json())
-        .then (function (){
-            document.querySelector(`#q-fav-button`).innerText = "Favorited"
-
+        .then (function (data){
+            if (data.removed){
+                document.querySelector(`#q-fav-button`).innerText = "Mark Question as Favorite"
+            } else{
+                document.querySelector(`#q-fav-button`).innerText = "Favorited (Click to Remove)"
+            }
         })
     })
     
@@ -47,7 +50,6 @@ function favoriteButtons(){
                 } else {
                     document.querySelector(`#fav-${ answerPk }`).innerText = "Favorited (Click to Remove)"
                 }
-            console.log(`favorite answer - ${answerPk}`)
             })
         })
     }
