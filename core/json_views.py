@@ -43,6 +43,7 @@ def post_fav_answer(request, answer_pk):
     Given a JSON request containing a answer pk from a user, store that favorite
     and reply
     """
+    # breakpoint()
     user = request.user
     answer = get_object_or_404(Answer, pk=answer_pk)
     question = answer.target_question
