@@ -29,7 +29,7 @@
         {% if question.correct_answer != answer %}
             <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Mark Answer as Correct</button>
         {% else %}
-            <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">CORRECT ANSWER</button>
+            <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">CORRECT ANSWER (Click to remove)</button>
         {% endif %}   
     {% endif %}
     {% endfor %}
