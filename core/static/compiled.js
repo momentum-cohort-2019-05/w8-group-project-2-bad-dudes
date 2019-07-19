@@ -43,7 +43,11 @@ function favoriteButtons(){
             fetch(postFavAnswer( answerPk ))
             .then (response => response.json())
             .then (function (data){
-                document.querySelector(`#fav-${ answerPk }`).innerText = "Favorited"
+                if (data.removed){
+                    document.querySelector(`#fav-${ answerPk }`).innerText = "Mark Answer as Favorite"
+                } else {
+                    document.querySelector(`#fav-${ answerPk }`).innerText = "Favorited (Click to Remove)"
+                }
             console.log(`favorite answer - ${answerPk}`)
             })
         })

@@ -41,32 +41,37 @@ def post_mark_correct(request, question_pk, answer_pk):
 def post_fav_answer(request, answer_pk):
     """
     Given a JSON request containing a answer pk from a user, store that favorite
-    and reply
+    and reply. If the answer is already favorited, remove it. Return a JSON response
+    containing a bool 'removed' that's true if the old_fav was deleted and false
+    if a new favorite was created
     """
-    # breakpoint()
-    user = request.user
-    answer = get_object_or_404(Answer, pk=answer_pk)
-    question = answer.target_question
-    new_favorite = Favorite(user=user, question=question, answer=answer)
-    new_favorite.save()
+    # see if there's an existing favorite that matches the request
+    removed = False
+    old_fav = Favorite.objects.filter(user=request.user).filter(answer=(Answer.objects.get(pk=answer_pk))).first()
+    if old_fav:
+        old_fav.delete()
+        removed = True
+    else:
+        user = request.user
+        answer = get_object_or_404(Answer, pk=answer_pk)
+        question = answer.target_question
+        new_favorite = Favorite(user=user, question=question, answer=answer)
+        new_favorite.save()
 
-    return JsonResponse({})
+    return JsonResponse({'removed': removed})
 
+@login_required
 @require_http_methods(['POST'])
 def post_fav_question(request, question_pk):
-    """
-    DOC string
-    """
     # breakpoint()
     print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!post_fav!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    req_data = json.loads(request.body.decode("UTF-8"))
     user = request.user
     answer = None
     question = get_object_or_404(Question, pk=question_pk)
     new_favorite = Favorite(user=user, question=question, answer=answer)
     new_favorite.save()
 
-    return JsonResponse({"question": req_data['questionPk']})
+    return JsonResponse({})
 
 
 # @require_http_methods(['POST'])
