@@ -15,7 +15,7 @@ function correctButtons(){
             fetch(postMarkCorrect( questionPk, answerPk ))
             .then (response => response.json())
             .then (function (data){
-                document.querySelector(`#answer-${answerPk}`).innerText = "CORRECT ANSWER"
+                document.querySelector(`#answer-${answerPk}`).innerText = "CORRECT ANSWER (Click to remove)"
                 if (data.previous_correct_answer_pk) {
                     document.querySelector(`#answer-${data.previous_correct_answer_pk}`).innerText = "Mark Answer as Correct"
                 }
@@ -32,6 +32,7 @@ function favoriteButtons(){
         .then (response => response.json())
         .then (function (){
             document.querySelector(`#q-fav-button`).innerText = "Favorited"
+
         })
     })
     

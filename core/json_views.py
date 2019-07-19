@@ -20,12 +20,20 @@ def post_mark_correct(request, question_pk, answer_pk):
         previous_correct_answer_pk = question.correct_answer.pk
     except:
         previous_correct_answer_pk = None
-    if request.user == question.author:
+
+
+    print (answer_pk)
+    print (previous_correct_answer_pk)
+
+    if request.user == question.author and answer_pk == previous_correct_answer_pk:
+        question.correct_answer = None
+        question.save()
+    elif request.user == question.author:
         if previous_correct_answer_pk:
             question.correct_answer = None
         question.correct_answer = correct_answer
         question.save()
-
+  
     return JsonResponse({"question": req_data['questionPk'], "previous_correct_answer_pk": previous_correct_answer_pk})
 
 @login_required
