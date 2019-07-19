@@ -28,10 +28,12 @@ def index(request):
 
 def question_detail(request,pk):
     question = Question.objects.get(pk=pk)
-
+    question_is_favorited = False
+    if Favorite.objects.filter(user=request.user).filter(question=question).filter(answer=None).first():
+        question_is_favorited = True
     return render(request, 'question_detail.html', {
         'question' : question,
-
+        'question_is_favorited' : question_is_favorited,
     })
 
 @login_required

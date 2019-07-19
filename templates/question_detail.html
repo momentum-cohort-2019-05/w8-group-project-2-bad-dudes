@@ -11,7 +11,11 @@
 <h1>{{ question.title }}</h1>
 <p>{{ question.content |safe }}</p>
 {% if request.user.is_authenticated %}
-    <button id='q-fav-button' data-questionpk="{{ question.pk }}">Mark Question as Favorite</button>
+    {% if question_is_favorited %}
+        <button id='q-fav-button' data-questionpk="{{ question.pk }}">Favorited (Click to Remove)</button>
+    {% else %}
+        <button id='q-fav-button' data-questionpk="{{ question.pk }}">Mark Question as Favorite</button>
+    {% endif %}
 {% endif %}
 <h2>Answers:</h2>
 
