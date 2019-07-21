@@ -4,7 +4,6 @@ const Cookies = require('js-cookie')
 
 correctButtons()
 favoriteButtons()
-deleteButton()
 
 function deleteButton(){
     const deleteButton = document.querySelector('#delete-q-button')
@@ -21,7 +20,7 @@ function deleteButton(){
 }
 
 function deleteQuestion(questionPk){
-    console.log("made it to delete function")
+
 }
 
 const show_form = document.querySelector('#showFormButton')

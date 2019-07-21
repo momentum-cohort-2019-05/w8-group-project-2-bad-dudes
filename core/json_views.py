@@ -43,10 +43,9 @@ def post_answer (request, question_pk):
     question = get_object_or_404(Question, pk=question_pk)
     new_answer = Answer(author=request.user, content=req_data['answerInput'], target_question=question)
     new_answer.save()
-
-    
-    
+    send_answer_email(question)
     return JsonResponse({"question": req_data['questionPk'], "answerInput": req_data['answerInput']})
+
 @login_required
 @require_http_methods(['POST'])
 def post_fav_answer(request, answer_pk):
@@ -101,3 +100,13 @@ def post_fav_question(request, question_pk):
 #         card.record_result(req_data['correct'], request.user)
 
 #     return JsonResponse({"correct": req_data['correct']})
+
+def send_answer_email(target_question):
+    url = 'google.com'
+    send_mail(
+        'Your question has a new answer',
+        f'Hi {target_question.author}, \nYour "{target_question}" has a new answer!\nClick the link below to check it out:\n{url}',
+        "FROM",
+        [f'{target_question.author.email}'],
+        fail_silently=False,
+    )
