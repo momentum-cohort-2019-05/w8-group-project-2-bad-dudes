@@ -75,7 +75,8 @@ def add_answer(request, pk):
             new_answer = Answer(author=request.user,content=content, target_question=target_question)
             new_answer.save()
             url = request.build_absolute_uri(target_question.get_absolute_url())
-            send_answer_email(target_question, url)
+            if target_question.author.email:
+                send_answer_email(target_question, url)
         return redirect(to='home')
     else:
         form = AnswerCreateForm()
