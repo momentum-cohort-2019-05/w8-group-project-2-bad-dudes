@@ -43,9 +43,10 @@ def post_answer (request, question_pk):
     question = get_object_or_404(Question, pk=question_pk)
     new_answer = Answer(author=request.user, content=req_data['answerInput'], target_question=question)
     new_answer.save()
+
     
     
-    return JsonResponse({"question": req_data['questionPk'], "answerInput": req_data['answerInput'], "answer": 5})
+    return JsonResponse({"question": req_data['questionPk'], "answerInput": req_data['answerInput']})
 @login_required
 @require_http_methods(['POST'])
 def post_fav_answer(request, answer_pk):

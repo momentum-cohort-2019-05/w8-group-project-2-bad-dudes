@@ -5,6 +5,15 @@ const Cookies = require('js-cookie')
 correctButtons()
 favoriteButtons()
 
+const show_form = document.querySelector('#showFormButton')
+show_form.addEventListener('click', function(event){
+    let answerForm = document.querySelector('#answerForm');
+    answerForm.removeAttribute("hidden")
+
+})
+
+
+
 function correctButtons(){
     let make_correct_buttons = document.querySelectorAll('.makeCorrectLink')
     for (button of make_correct_buttons){
@@ -81,6 +90,8 @@ function postFavQuestion( questionPk ){
     })
 }
 
+const answer_submit = document.querySelector('#answerSubmit')
+
 
 answer_submit.addEventListener('click', function(event){
     event.preventDefault()
@@ -93,9 +104,15 @@ answer_submit.addEventListener('click', function(event){
     .then (function (data){
         //location.reload()
         const newAnswer = document.createElement('p')
-        newAnswer.innerHTML = `<strong>${data.answerInput} - by ${data.author}</strong>`
-        const nodeAnswer = document.querySelector("#displayAnswers")
+        newAnswer.innerHTML = `
+        
+        <strong>${data.answerInput} - by ${data.answer_author}</strong>
+        
+        
+        `
+        const nodeAnswer = document.querySelector("#individualAnswer")
         nodeAnswer.insertBefore(newAnswer, nodeAnswer.childNodes[0])
+
     })
 })
 

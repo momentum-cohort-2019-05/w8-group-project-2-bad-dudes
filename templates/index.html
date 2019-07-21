@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
+
+
 {% block content %}
+
 <h1>Question Box</h1>
 <p>Welcome to the Question Box, where you have questions and we (hopefully) have the answers!</p>
 <a href="{% url 'new-question' %}">Add a New Question</a>
@@ -8,7 +11,7 @@
 
 {% if question_list %}
     {% for question in question_list %}
-    <div>
+    <div class="question-display">
         <a href="{{question.get_absolute_url}}"><strong>{{ question.title }}</strong></a>
     </div>
     {% endfor %}
