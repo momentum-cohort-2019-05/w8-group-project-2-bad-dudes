@@ -10,7 +10,7 @@
 
 {% block content %}
 <br>
-<p>Asked by User: {{ question.author }}</p>
+<p>Asked by: {{ question.author }}</p>
 <h1>{{ question.title }}</h1>
 <p>{{ question.content |safe }}</p>
 {% if request.user.is_authenticated %}
