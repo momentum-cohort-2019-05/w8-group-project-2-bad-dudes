@@ -122,8 +122,13 @@ answer_submit.addEventListener('click', function(event){
         
         
         `
-        const nodeAnswer = document.querySelector("#individualAnswer")
-        nodeAnswer.insertBefore(newAnswer, nodeAnswer.childNodes[0])
+        const nodeAnswer = document.querySelector("#displayAnswers")
+        if (nodeAnswer.childNodes.length > 0){
+            nodeAnswer.insertBefore(newAnswer, nodeAnswer.childNodes[0])
+        } else {
+            nodeAnswer.appendChild(newAnswer)
+            document.querySelector('#no-answer').innerText = ''
+        }
 
     })
 })

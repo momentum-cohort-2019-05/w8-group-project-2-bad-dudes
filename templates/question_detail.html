@@ -60,8 +60,8 @@
 <div class="answerClass">
     <h2>Answers:</h2>
 
+    <div id="displayAnswers"></div>
     {% if question.answer_set.all %}
-    <div id="displayAnswers" class="qdisplay">
             {% for answer in question.answer_set.all %}
             <div id="individualAnswer">
                     {% if question.correct_answer != answer %}
@@ -87,7 +87,7 @@
             {% endfor %} 
             </div>
     {% else %}
-        <p>There are no answers for this question.</p>
+        <p id="no-answer">There are no answers for this question.</p>
     {% endif %}
     </div>
 </div>
