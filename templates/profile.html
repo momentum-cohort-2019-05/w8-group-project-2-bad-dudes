@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h2>My Questions</h2>
+
+{% for authored_question in authored_questions %}
+<div>
+    <a href="{{question.get_absolute_url}}">{{ question.title }}</a>
+</div>
+{% endfor %}
+
 <h2>Favorited Questions</h2>
 
-{% if fav_questions %}
-    {% for fav_question in fav_questions %}
-    <div>
-        {{ fav.}}
-    </div>
+
+{% for fav_question in fav_questions %}
+<div>
+    <a href="{{question.get_absolute_url}}">{{ question.title }}</a>
+</div>
+{% endfor %}
+
+
+
 {% endblock %}
