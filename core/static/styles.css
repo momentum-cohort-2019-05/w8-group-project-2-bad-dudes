@@ -9,7 +9,7 @@
 .question-display {
     display: flex;
     border-radius: 25px;
-    border: 2px solid #FFA500;
+    border: 5px solid #FFA500;
     padding: 20px;
     width: auto;
     height: auto;
@@ -17,11 +17,17 @@
 
 .answer-display {
     display: flex;
+    margin-bottom: 30px;
+	display: block;
+	margin-top: 2px;
     border-radius: 25px;
-    border: 2px solid #FFA500;
-    padding: 20px;
+    border: 5px solid #FFA500;
     width: auto;
     height: auto;
+}
+
+.answer-display p {
+   padding-left: 20px;
 }
 
 .qdisplay{
