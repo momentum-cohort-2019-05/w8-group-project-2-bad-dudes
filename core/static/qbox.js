@@ -126,7 +126,9 @@ answer_submit.addEventListener('click', function(event){
             nodeAnswer.insertBefore(newAnswer, nodeAnswer.childNodes[0])
         } else {
             nodeAnswer.appendChild(newAnswer)
-            document.querySelector('#no-answer').innerText = ''
+            if(document.querySelector('#no-answer')){
+                document.querySelector('#no-answer').innerText = ''
+            }
         }
 
     })
