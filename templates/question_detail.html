@@ -19,7 +19,7 @@
 {% if request.user.is_authenticated %}
     <br>
     {% if question_is_favorited %}
-        <button id='q-fav-button' data-questionpk="{{ question.pk }}">★)</button>
+        <button id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
     {% else %}
         <button id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
     {% endif %}
