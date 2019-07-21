@@ -106,6 +106,8 @@ const answer_submit = document.querySelector('#answerSubmit')
 answer_submit.addEventListener('click', function(event){
     event.preventDefault()
     console.log("The answer button has been submited")
+    let answerForm = document.querySelector('#answerForm')
+    answerForm.setAttribute("hidden","hidden")
     const questionPk = event.target.dataset.questionpk
     const answerInput = document.querySelector("#answerInput").value;
     console.log(answerInput)
@@ -122,8 +124,6 @@ answer_submit.addEventListener('click', function(event){
         `
         const nodeAnswer = document.querySelector("#individualAnswer")
         nodeAnswer.insertBefore(newAnswer, nodeAnswer.childNodes[0])
-        let answerForm = document.querySelector('#answerForm')
-        answerForm.setAttribute("hidden","hidden")
 
     })
 })
