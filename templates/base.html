@@ -16,7 +16,7 @@
         <header class="base-header">
             <div id="login-menu" class="tr">
                 {% if request.user.is_authenticated %}
-                  <div>Hi {{request.user}} | <a class="washed-blue" href="">Profile</a> | <a class="washed-blue" href="{% url 'account_logout' %}">Logout</a>
+                  <div>Hi {{request.user}} | <a class="washed-blue" href="{% url 'profile' %}">Profile</a> | <a class="washed-blue" href="{% url 'account_logout' %}">Logout</a>
                     {% else %}
                       <a class="washed-blue" href="{% url 'account_login' %}">Login</a> | <a class="washed-blue" href="{% url 'account_signup' %}">Register</a>
                     {% endif %}</div>

@@ -26,6 +26,21 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
 
+@login_required
+def profile(request):
+    
+    question = get_object_or_404(Question)
+    
+    fav_questions = Favorite.objects.filter(user=request.user, question=question).all()
+    # authored_questions = 
+    # fav_answers = 
+
+    context = {
+        'fav_questions': fav_questions,
+    }
+
+    return render(request, 'profile.html', context=context)
+
 
 def question_detail(request,pk):
     question = Question.objects.get(pk=pk)
