@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 import markdown
 import bleach
 from bleach_whitelist import markdown_tags, markdown_attrs
+from django.core.mail import send_mail
 
 
 
@@ -74,6 +75,9 @@ def add_answer(request, pk):
             content = form.cleaned_data['content']
             new_answer = Answer(author=request.user,content=content, target_question=target_question)
             new_answer.save()
+            url = request.build_absolute_uri(target_question.get_absolute_url())
+            if target_question.author.email:
+                send_answer_email(target_question, url)
         return redirect(to='home')
     else:
         form = AnswerCreateForm()
@@ -82,3 +86,13 @@ def add_answer(request, pk):
             'form' : form,
             'target_question': target_question
         })
+
+def send_answer_email(target_question, url):
+
+    send_mail(
+        'Your question has a new answer',
+        f'Hi {target_question.author}, \nYour "{target_question}" has a new answer!\nClick the link below to check it out:\n{url}',
+        "FROM",
+        [f'{target_question.author.email}'],
+        fail_silently=False,
+    )

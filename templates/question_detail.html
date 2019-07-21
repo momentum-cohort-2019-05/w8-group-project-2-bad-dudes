@@ -9,15 +9,34 @@
 
 
 {% block content %}
+<h1>{{ question.title }}</h1>
+<p>{{ question.content |safe }}</p>
+{% if request.user.is_authenticated %}
+    {% if question_is_favorited %}
+        <button id='q-fav-button' data-questionpk="{{ question.pk }}">★)</button>
+    {% else %}
+        <button id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
+    {% endif %}
+{% endif %}
+<h2>Answers:</h2>
 
-<div class="questionClass">
-    <h1>{{ question.title }}</h1>
-    <p>{{ question.content |safe }}</p>
+{% if request.user.is_authenticated %}
+    <a href="{% url 'new-answer' question.pk %}">Add an answer</a>
+{% else %}
+    <p>You need to <a class="washed-blue" href="{% url 'account_login' %}">login to your account</a> in order to submit an answer.</p>
+{% endif %}
+
+    {% if question.answer_set.all %}
+    {% for answer in question.answer_set.all %}
+
+    
+    <hr>
+    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}} {% if question.correct_answer == answer %}<b>✔️ CORRECT ANSWER</b>{% endif %}</p></p>
     {% if request.user.is_authenticated %}
-        {% if question_is_favorited %}
-            <button id='q-fav-button' data-questionpk="{{ question.pk }}">Favorited (Click to Remove)</button>
+        {% if answer.pk in favorited_answer_pk_list %}
+            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">★</button><br>
         {% else %}
-            <button id='q-fav-button' data-questionpk="{{ question.pk }}">Mark Question as Favorite</button>
+            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">☆</button><br>
         {% endif %}
           
         <button id="showFormButton">Add an answer</button>

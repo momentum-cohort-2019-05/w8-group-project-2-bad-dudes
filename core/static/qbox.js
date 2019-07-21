@@ -40,9 +40,9 @@ function favoriteButtons(){
         .then (response => response.json())
         .then (function (data){
             if (data.removed){
-                document.querySelector(`#q-fav-button`).innerText = "Mark Question as Favorite"
+                document.querySelector(`#q-fav-button`).innerText = "☆"
             } else{
-                document.querySelector(`#q-fav-button`).innerText = "Favorited (Click to Remove)"
+                document.querySelector(`#q-fav-button`).innerText = "★"
             }
         })
     })
@@ -55,9 +55,9 @@ function favoriteButtons(){
             .then (response => response.json())
             .then (function (data){
                 if (data.removed){
-                    document.querySelector(`#fav-${ answerPk }`).innerText = "Mark Answer as Favorite"
+                    document.querySelector(`#fav-${ answerPk }`).innerText = "☆"
                 } else {
-                    document.querySelector(`#fav-${ answerPk }`).innerText = "Favorited (Click to Remove)"
+                    document.querySelector(`#fav-${ answerPk }`).innerText = "★"
                 }
             })
         })
