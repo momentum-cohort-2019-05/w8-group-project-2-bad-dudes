@@ -11,7 +11,15 @@
 {% block content %}
 <h1>{{ question.title }}</h1>
 <p>{{ question.content |safe }}</p>
+{% if request.user == question.author %}
+    <div id="delete-div">
+        <button data-questionpk = "{{ question.pk }}" id="delete-q-button">Delete this question</button>
+        <br>
+        <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Delete Question</a>
+    </div>
+{% endif %}
 {% if request.user.is_authenticated %}
+    <br>
     {% if question_is_favorited %}
         <button id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
     {% else %}

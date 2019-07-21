@@ -4,12 +4,21 @@ const Cookies = require('js-cookie')
 
 correctButtons()
 favoriteButtons()
+deleteButton()
 
-const show_form = document.querySelector('#showFormButton')
-show_form.addEventListener('click', function(event){
-    let answerForm = document.querySelector('#answerForm');
+function deleteButton(){
+    const deleteButton = document.querySelector('#delete-q-button')
+    deleteButton.addEventListener('click', function(event) {
+        console.log(document.querySelector('#perm-delete-link'))
+        document.querySelector('#perm-delete-link').removeAttribute("hidden")
+    })
+}
+
+const showForm = document.querySelector('#showFormButton')
+
+showForm.addEventListener('click', function(event){
+    let answerForm = document.querySelector('#answerForm')
     answerForm.removeAttribute("hidden")
-
 })
 
 
@@ -96,6 +105,8 @@ const answer_submit = document.querySelector('#answerSubmit')
 answer_submit.addEventListener('click', function(event){
     event.preventDefault()
     console.log("The answer button has been submited")
+    let answerForm = document.querySelector('#answerForm')
+    answerForm.setAttribute("hidden","hidden")
     const questionPk = event.target.dataset.questionpk
     const answerInput = document.querySelector("#answerInput").value;
     console.log(answerInput)
