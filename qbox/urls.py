@@ -41,6 +41,8 @@ urlpatterns += [
 urlpatterns += [
     path('json/mark-correct/<int:question_pk>/<int:answer_pk>/',
         json_views.post_mark_correct, name="json_post_mark_correct"),
+    path('json/post-answer/<int:question_pk>/',
+        json_views.post_answer, name="json_post_answer"),
     path('json/fav-answer/<int:answer_pk>/',
         json_views.post_fav_answer, name="json_post_fav_answer"),
     path('json/fav-question/<int:question_pk>/',
