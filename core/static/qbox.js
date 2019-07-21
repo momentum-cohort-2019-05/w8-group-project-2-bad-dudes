@@ -14,15 +14,11 @@ function deleteButton(){
     })
 }
 
-function deleteQuestion(questionPk){
+const showForm = document.querySelector('#showFormButton')
 
-}
-
-const show_form = document.querySelector('#showFormButton')
-show_form.addEventListener('click', function(event){
-    let answerForm = document.querySelector('#answerForm');
+showForm.addEventListener('click', function(event){
+    let answerForm = document.querySelector('#answerForm')
     answerForm.removeAttribute("hidden")
-
 })
 
 
@@ -125,6 +121,8 @@ answer_submit.addEventListener('click', function(event){
         `
         const nodeAnswer = document.querySelector("#individualAnswer")
         nodeAnswer.insertBefore(newAnswer, nodeAnswer.childNodes[0])
+        let answerForm = document.querySelector('#answerForm')
+        answerForm.setAttribute("hidden","hidden")
 
     })
 })
