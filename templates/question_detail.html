@@ -12,9 +12,9 @@
 <p>{{ question.content |safe }}</p>
 {% if request.user.is_authenticated %}
     {% if question_is_favorited %}
-        <button id='q-fav-button' data-questionpk="{{ question.pk }}">Favorited (Click to Remove)</button>
+        <button id='q-fav-button' data-questionpk="{{ question.pk }}">★)</button>
     {% else %}
-        <button id='q-fav-button' data-questionpk="{{ question.pk }}">Mark Question as Favorite</button>
+        <button id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
     {% endif %}
 {% endif %}
 <h2>Answers:</h2>
@@ -30,12 +30,12 @@
 
     
     <hr>
-    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}} {% if question.correct_answer == answer %}<b>CORRECT ANSWER</b>{% endif %}</p></p>
+    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}} {% if question.correct_answer == answer %}<b>✔️ CORRECT ANSWER</b>{% endif %}</p></p>
     {% if request.user.is_authenticated %}
         {% if answer.pk in favorited_answer_pk_list %}
-            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">Favorited (Click to Remove)</button><br>
+            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">★</button><br>
         {% else %}
-            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">Mark Answer as Favorite</button><br>
+            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">☆</button><br>
         {% endif %}
     {% endif %}
     {% if question.author == request.user %}
