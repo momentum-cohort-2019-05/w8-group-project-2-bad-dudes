@@ -44,6 +44,18 @@
     <p>You need to <a class="washed-blue" href="{% url 'account_login' %}">login to your account</a> in order to submit an answer.</p>
 {% endif %}
 
+<h2>Correct Answer:</h2>
+<div class="correct-answer">
+    {% if question.answer_set.all %}
+        {% for answer in question.answer_set.all %} 
+            {% if question.correct_answer == answer %}
+                <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}
+                <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">CORRECT ANSWER (Click to remove)</button>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
 
 <div class="answerClass">
     <h2>Answers:</h2>
@@ -52,9 +64,10 @@
     <div id="displayAnswers" class="qdisplay">
             {% for answer in question.answer_set.all %}
             <div id="individualAnswer">
+                    {% if question.correct_answer != answer %}
                 <div class="answer-display">
-                    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}} {% if question.correct_answer == answer %}<b>CORRECT ANSWER</b>{% endif %}</p>
-                    {% if request.user.is_authenticated %}
+                    
+                    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}
                         
                     {% if answer.pk in favorited_answer_pk_list %}
                         
@@ -64,13 +77,10 @@
                         <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">☆</button><br>
                     {% endif %}
                     {% endif %}
+                    
                     {% if question.author == request.user %}
                         {% if question.correct_answer != answer %}
-                         
                             <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Mark Answer as Correct</button>
-                        {% else %}
-                        
-                            <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">CORRECT ANSWER (Click to remove)</button>
                         {% endif %}   
                     {% endif %}
                 </div> 

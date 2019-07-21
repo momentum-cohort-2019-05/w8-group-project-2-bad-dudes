@@ -19,7 +19,8 @@
     display: flex;
     margin-bottom: 30px;
 	display: block;
-	margin-top: 2px;
+    margin-top: 2px;
+    
     border-radius: 25px;
     border: 5px solid #FFA500;
     width: auto;
@@ -33,4 +34,12 @@
 .qdisplay{
     display: flex;
     padding: 30px 0 ;
+}
+
+.a-fav-button{
+    margin-left: 20px;
+}
+
+.makeCorrectLink{
+    margin-left: 20px;
 }
