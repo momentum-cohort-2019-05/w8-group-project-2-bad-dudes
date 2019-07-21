@@ -13,7 +13,15 @@
 <p>Asked by: {{ question.author }}</p>
 <h1>{{ question.title }}</h1>
 <p>{{ question.content |safe }}</p>
+{% if request.user == question.author %}
+    <div id="delete-div">
+        <button data-questionpk = "{{ question.pk }}" id="delete-q-button">Delete this question</button>
+        <br>
+        <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Delete Question</a>
+    </div>
+{% endif %}
 {% if request.user.is_authenticated %}
+    <br>
     {% if question_is_favorited %}
         <button id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
     {% else %}
@@ -42,8 +50,8 @@
 <div class="answerClass">
     <h2>Answers:</h2>
 
+    <div id="displayAnswers"></div>
     {% if question.answer_set.all %}
-    <div id="displayAnswers">
             {% for answer in question.answer_set.all %}
             <div id="individualAnswer">
                 <hr>
@@ -66,7 +74,7 @@
                 <hr>
             </div>
     {% else %}
-        <p>There are no answers for this question.</p>
+        <p id="no-answer">There are no answers for this question.</p>
     {% endif %}
     </div>
 </div>
