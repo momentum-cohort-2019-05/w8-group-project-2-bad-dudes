@@ -5,18 +5,13 @@ const Cookies = require('js-cookie')
 
 correctButtons()
 favoriteButtons()
+deleteButton()
 
 function deleteButton(){
     const deleteButton = document.querySelector('#delete-q-button')
     deleteButton.addEventListener('click', function(event) {
-        questionPk = event.target.dataset.questionpk
-        new_button = document.createElement('button')
-        new_button.innerHTML = `data-questionpk = "${questionPk}"`
-        new_button.innerText = "Click to permanently delete this question"
-        new_button.addEventListener('click', function(){
-            deleteQuestion(questionPk)
-        })
-        document.querySelector('#delete-div').appendChild(new_button)
+        console.log(document.querySelector('#perm-delete-link'))
+        document.querySelector('#perm-delete-link').removeAttribute("hidden")
     })
 }
 

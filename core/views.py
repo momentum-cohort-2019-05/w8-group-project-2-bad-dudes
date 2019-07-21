@@ -64,6 +64,14 @@ def add_question(request):
             'form' : form,
         })
 
+@login_required
+def delete_question(request, question_pk):
+    target_question = get_object_or_404(Question, pk=question_pk)
+    if request.user == target_question.author:
+        target_question.delete()
+    return redirect('home')
+
+
 # @login_required
 # def add_answer(request, pk):
 #     """adds a question authored by the pk of the user"""
