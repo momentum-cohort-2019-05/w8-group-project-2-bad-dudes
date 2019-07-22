@@ -28,7 +28,7 @@
 }
 
 .answer-display p {
-   padding-left: 20px;
+   padding-left: 0px;
 }
 
 .qdisplay{
@@ -44,14 +44,21 @@
     margin-left: 20px;
 }
 
-.correct-answer{
+.actual-answer{
     padding: 20px 0 auto auto;
     margin: 20px;
     width: auto;
     height: auto; 
+    font-size: 20px;
+}
+
+.correct-answer{
+    display: flex;
+    border: 10px solid green;
+    width: 80%;
+    padding: 30px 0px;
 }
 
 .section{
-    border: 10px solid green;
-
+    padding: 30px 0px;
 }
