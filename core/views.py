@@ -27,6 +27,22 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
+def profile(request):
+    
+    question_list = Question.objects.all()
+    fav_questions = Favorite.objects.filter(user=request.user, answer=None)
+    authored_questions = Question.objects.filter(author=request.user)
+    print(fav_questions)
+
+    context = {
+        'fav_questions': fav_questions,
+        'authored_questions': authored_questions,
+        'question_list': question_list,
+    }
+
+    return render(request, 'profile.html', context=context)
+
+
 def question_detail(request,pk):
     question = Question.objects.get(pk=pk)
     question_is_favorited = False

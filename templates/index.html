@@ -13,6 +13,7 @@
     {% for question in question_list %}
     <div class="question-display">
         <a href="{{question.get_absolute_url}}"><strong>{{ question.title }}</strong></a>
+        Created by: {{ question.author }}
     </div>
     {% endfor %}
 {% else %}
