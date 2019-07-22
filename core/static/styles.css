@@ -17,6 +17,17 @@
     height: auto;
 }
 
+.fav-star {
+    color: orange;
+    border-width: 0px;
+}
+
+.fav-star:focus,.fav-star:active {
+    outline: none !important;
+    box-shadow: none !important;
+ }
+
+
 #login-name {
     text-align: right;
 }
