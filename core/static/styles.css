@@ -10,10 +10,9 @@
 }
 .question-display {
     display: flex;
-    border-radius: 25px;
     border: 5px solid #FFA500;
     padding: 20px;
-    width: auto;
+    width: 70%;
     height: auto;
 }
 
