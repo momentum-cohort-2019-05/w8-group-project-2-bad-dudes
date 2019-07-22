@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>My Questions</h2>
+
+{% if authored_questions %}
+    {% for question in authored_questions %}
+        <div>
+            <a href="{{question.get_absolute_url}}">{{ question.title }}</a>
+        </div>
+    {% endfor %}
+{% else %}
+    None
+{% endif %}
+
+<h2>Favorited Questions</h2>
+
+{% if fav_questions.all %}
+    {% for favorite in fav_questions %}
+        <div>
+            <a href="{{question.get_absolute_url}}">{{ favorite.question }}</a> Created by: {{ favorite.question.author }}
+        </div>
+    {% endfor %}
+{% else %}
+    None
+{% endif %}
+
+
+
+{% endblock %}

@@ -37,6 +37,7 @@ urlpatterns += [
     path('new-question/', views.add_question, name='new-question'),
     path('delete-question/<int:question_pk>/', views.delete_question, name="delete-question"),
     path('core/new-question/', views.add_question, name='new-question'),
+    path('profile/', views.profile, name='profile'),
 ]
 
 urlpatterns += [
