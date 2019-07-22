@@ -14,10 +14,9 @@ gunicorn = "*"
 markdown = "*"
 bleach-whitelist = "*"
 bleach = "*"
-
 django-allauth = "*"
 lock = "*"
-
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
