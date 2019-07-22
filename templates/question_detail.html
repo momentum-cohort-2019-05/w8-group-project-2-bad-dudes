@@ -9,17 +9,20 @@
 
 {% block content %}
 <br>
-<h1>{{ question.title }}</h1>
-<p>Asked by: {{ question.author }}</p>
-<p>{{ question.content |safe }}</p>
+<div class="question-header">
+    <h1>{{ question.title }}</h1>
+    <p>Asked by: {{ question.author }}</p>
+</div>
+    <p>{{ question.content |safe }}</p>
 
-{% if request.user == question.author %}
-    <div id="delete-div">
-        <button data-questionpk = "{{ question.pk }}" id="delete-q-button">Delete this question</button>
-        <br>
-        <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Delete Question</a>
-    </div>
-{% endif %}
+    {% if request.user == question.author %}
+        <div id="delete-div">
+            <button data-questionpk = "{{ question.pk }}" id="delete-q-button">Delete this question</button>
+            <br>
+            <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Delete Question</a>
+        </div>
+    {% endif %}
+
 
 {% if request.user.is_authenticated %}
     <br>
