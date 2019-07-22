@@ -17,9 +17,14 @@
     height: auto;
 }
 
+#q-title-area{
+    display:flex;
+}
+
 .fav-star {
     color: orange;
     border-width: 0px;
+    font-size: 1.5rem;
 }
 
 .fav-star:focus,.fav-star:active {

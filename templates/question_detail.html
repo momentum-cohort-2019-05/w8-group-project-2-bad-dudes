@@ -9,7 +9,15 @@
 
 {% block content %}
 <br>
-<h1>{{ question.title }}</h1>
+<h1 id="q-title-area">
+{% if request.user.is_authenticated %}
+    {% if question_is_favorited %}
+        <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
+    {% else %}
+        <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
+    {% endif %}
+{% endif %}
+{{ question.title }}</h1>
 <p>Asked by: {{ question.author }}</p>
 <p>{{ question.content |safe }}</p>
 
@@ -21,14 +29,6 @@
     </div>
 {% endif %}
 
-{% if request.user.is_authenticated %}
-    <br>
-    {% if question_is_favorited %}
-        <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
-    {% else %}
-        <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
-    {% endif %}
-{% endif %}
 
 {% if request.user.is_authenticated %}
 <button id="showFormButton">Add an answer</button>
