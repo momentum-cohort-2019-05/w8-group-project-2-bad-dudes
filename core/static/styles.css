@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Geostar&display=swap');
+
 .base-header {
-    text-align: right;
     vertical-align: center;
-    background-color: coral;
-    height: 40px;
+    background-color: orange;
     padding: 6px;
 }
 
+#qbox-header {
+    font-family: 'Bungee Outline', cursive;
+}
 .question-display {
     display: flex;
     border-radius: 25px;
@@ -13,6 +16,16 @@
     padding: 20px;
     width: auto;
     height: auto;
+}
+
+#login-name {
+    text-align: right;
+}
+
+#login-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .answer-display {
