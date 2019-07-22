@@ -133,10 +133,13 @@ STATIC_URL = '/static/'
 
 # Email backend
 from .email_info import *
+from dotenv import load_dotenv
+load_dotenv()
+
 EMAIL_USE_TLS = EMAIL_USE_TLS
 EMAIL_HOST = EMAIL_HOST
 EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD') # now set in environment variable
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_PORT = EMAIL_PORT
 
 # Configure Django App for Heroku.
