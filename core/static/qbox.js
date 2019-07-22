@@ -7,11 +7,15 @@ favoriteButtons()
 deleteButton()
 
 function deleteButton(){
-    const deleteButton = document.querySelector('#delete-q-button')
-    deleteButton.addEventListener('click', function(event) {
-        console.log(document.querySelector('#perm-delete-link'))
-        document.querySelector('#perm-delete-link').removeAttribute("hidden")
-    })
+    try {
+        const deleteButton = document.querySelector('#delete-q-button')
+        deleteButton.addEventListener('click', function(event) {
+            console.log(document.querySelector('#perm-delete-link'))
+            document.querySelector('#perm-delete-link').removeAttribute("hidden")
+        })
+    } catch {
+        console.log('no delete button')
+    }
 }
 
 const showForm = document.querySelector('#showFormButton')
