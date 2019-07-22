@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Geostar&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Geostar|Pacifico&display=swap');
 .base-header {
     vertical-align: center;
     background-color: orange;
@@ -7,7 +6,7 @@
 }
 
 #qbox-header {
-    font-family: 'Bungee Outline', cursive;
+    font-family: 'Pacifico', cursive;
 }
 .question-display {
     display: flex;
