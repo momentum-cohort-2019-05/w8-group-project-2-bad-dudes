@@ -12,7 +12,7 @@
     {% for question in question_list %}
     <div class="qdisplay">
         <div class="question-display">
-            <a href="{{question.get_absolute_url}}"><strong>{{ question.title }}</strong></a>
+            <a href="{{question.get_absolute_url}}"><strong>{{ question.title }}</strong></a> - Created by {{ question.author }} at {{ question.created_at}}
         </div>
     </div>
     {% endfor %}
