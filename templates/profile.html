@@ -18,7 +18,7 @@
 {% if fav_questions.all %}
     {% for favorite in fav_questions %}
         <div>
-            <a href="{{question.get_absolute_url}}">{{ favorite.question }}</a> Created by: {{ favorite.question.author }}
+            <a href="{{favorite.question.get_absolute_url}}">{{ favorite.question }}</a> Created by: {{ favorite.question.author }}
         </div>
     {% endfor %}
 {% else %}
