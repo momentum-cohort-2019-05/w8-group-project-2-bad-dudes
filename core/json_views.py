@@ -46,7 +46,7 @@ def post_answer (request, question_pk):
     new_answer = Answer(author=request.user, content=req_data['answerInput'], target_question=question)
     new_answer.save()
     url = request.build_absolute_uri(question.get_absolute_url())
-    send_answer_email(question,url)
+    # send_answer_email(question,url)
     return JsonResponse({"question": req_data['questionPk'], "answerInput": req_data['answerInput']})
 
 @login_required

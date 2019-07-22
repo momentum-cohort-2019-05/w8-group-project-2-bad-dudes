@@ -1,0 +1,57 @@
+.base-header {
+    text-align: right;
+    vertical-align: center;
+    background-color: coral;
+    height: 40px;
+    padding: 6px;
+}
+
+.question-display {
+    display: flex;
+    border-radius: 25px;
+    border: 5px solid #FFA500;
+    padding: 20px;
+    width: auto;
+    height: auto;
+}
+
+.answer-display {
+    display: flex;
+    margin-bottom: 30px;
+	display: block;
+    margin-top: 2px;
+    
+    border-radius: 25px;
+  
+    width: auto;
+    height: auto;
+}
+
+.answer-display p {
+   padding-left: 20px;
+}
+
+.qdisplay{
+    display: flex;
+    padding: 30px 0 ;
+}
+
+.a-fav-button{
+    margin-left: 20px;
+}
+
+.makeCorrectLink{
+    margin-left: 20px;
+}
+
+.correct-answer{
+    padding: 20px 0 auto auto;
+    margin: 20px;
+    width: auto;
+    height: auto; 
+}
+
+.section{
+    border: 10px solid green;
+
+}
