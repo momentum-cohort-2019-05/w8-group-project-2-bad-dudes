@@ -7,6 +7,6 @@
   },
   "scripts": {
     "start": "watchify core/static/qbox.js -o core/static/compiled.js",
-    "compile": "browserify core/static/qbox.js -o core/static/compiled.js"
+    "build": "browserify core/static/qbox.js -o core/static/compiled.js"
   }
 }
