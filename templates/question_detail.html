@@ -4,15 +4,15 @@
 
 {% block head %}
 <script src="{% static 'compiled.js' %}" defer></script>
-
 {% endblock %}
 
 
 {% block content %}
 <br>
-<p>Asked by: {{ question.author }}</p>
 <h1>{{ question.title }}</h1>
+<p>Asked by: {{ question.author }}</p>
 <p>{{ question.content |safe }}</p>
+
 {% if request.user == question.author %}
     <div id="delete-div">
         <button data-questionpk = "{{ question.pk }}" id="delete-q-button">Delete this question</button>
@@ -20,6 +20,7 @@
         <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Delete Question</a>
     </div>
 {% endif %}
+
 {% if request.user.is_authenticated %}
     <br>
     {% if question_is_favorited %}
@@ -28,7 +29,6 @@
         <button id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
     {% endif %}
 {% endif %}
-
 
 {% if request.user.is_authenticated %}
 <button id="showFormButton">Add an answer</button>
@@ -45,6 +45,7 @@
 {% else %}
     <p>You need to <a class="washed-blue" href="{% url 'account_login' %}">login to your account</a> in order to submit an answer.</p>
 {% endif %}
+
 
 <section class="section">
     {% if question.correct_answer != Null %}
