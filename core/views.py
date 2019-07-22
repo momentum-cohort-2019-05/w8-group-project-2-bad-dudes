@@ -29,13 +29,15 @@ def index(request):
 
 def profile(request):
     
+    question_list = Question.objects.all()
     fav_questions = Favorite.objects.filter(user=request.user, answer=None)
     authored_questions = Question.objects.filter(author=request.user)
-    # fav_answers = 
+    print(fav_questions)
 
     context = {
         'fav_questions': fav_questions,
         'authored_questions': authored_questions,
+        'question_list': question_list,
     }
 
     return render(request, 'profile.html', context=context)
