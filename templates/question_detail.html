@@ -4,15 +4,15 @@
 
 {% block head %}
 <script src="{% static 'compiled.js' %}" defer></script>
-
 {% endblock %}
 
 
 {% block content %}
 <br>
-<p>Asked by: {{ question.author }}</p>
 <h1>{{ question.title }}</h1>
+<p>Asked by: {{ question.author }}</p>
 <p>{{ question.content |safe }}</p>
+
 {% if request.user == question.author %}
     <div id="delete-div">
         <button data-questionpk = "{{ question.pk }}" id="delete-q-button">Delete this question</button>
@@ -20,6 +20,7 @@
         <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Delete Question</a>
     </div>
 {% endif %}
+
 {% if request.user.is_authenticated %}
     <br>
     {% if question_is_favorited %}
@@ -28,7 +29,6 @@
         <button id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
     {% endif %}
 {% endif %}
-
 
 {% if request.user.is_authenticated %}
 <button id="showFormButton">Add an answer</button>
@@ -46,60 +46,67 @@
     <p>You need to <a class="washed-blue" href="{% url 'account_login' %}">login to your account</a> in order to submit an answer.</p>
 {% endif %}
 
-<section class="section">
-<div class="correct-answer">
-<h2>Correct Answer:</h2>
 
-    {% if question.answer_set.all %}
-        {% for answer in question.answer_set.all %} 
-            {% if question.correct_answer == answer %}
-                <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}
-                {% if question.author == request.user %}
-                    <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">CORRECT ANSWER (Click to remove)</button>
-                {% endif %}
+<section class="section">
+    {% if question.correct_answer != Null %}
+    <div class="correct-answer">
+        <div class="actual-answer">
+            <h2>Correct Answer:</h2>
+                {% if question.answer_set.all %}
+                    {% for answer in question.answer_set.all %} 
+                        {% if question.correct_answer == answer %}
+                            <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}
+                            {% if question.author == request.user %}
+                                <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Remove as correct answer</button>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
             {% endif %}
-        {% endfor %}
+        </div>                         
+    </div>
     {% endif %}
-</div>
 </section>
 
-<div class="answerClass">
-    <h2>Answers:</h2>
 
-    <div id="displayAnswers"></div>
-    {% if question.answer_set.all %}
-            {% for answer in question.answer_set.all %}
-            <div id="individualAnswer">
-                    {% if question.correct_answer != answer %}
-                <div class="answer-display">
-                    
-                    <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}
-                    
-                        
-                    {% if question.author == request.user %}
+<section class="section">
+    <div class="answerClass">
+        <h2>Responses:</h2>
 
-                    {% if answer.pk in favorited_answer_pk_list %}
-                        
-                       <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">★</button><br>
-                    {% else %}
-                        
-                        <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">☆</button><br>
-                    {% endif %}
-                    {% endif %}
-                    {% endif %}
-
-                    
-                    {% if question.author == request.user %}
+        <div id="displayAnswers"></div>
+        {% if question.answer_set.all %}
+                {% for answer in question.answer_set.all %}
+                <div id="individualAnswer">
                         {% if question.correct_answer != answer %}
-                            <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Mark Answer as Correct</button>
-                        {% endif %}   
-                    {% endif %}
-                </div> 
-            {% endfor %} 
-            </div>
-    {% else %}
-        <p id="no-answer">There are no answers for this question.</p>
-    {% endif %}
+                    <div class="answer-display">
+                        
+                        <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}
+                        
+                            
+                        {% if question.author == request.user %}
+
+                        {% if answer.pk in favorited_answer_pk_list %}
+                            
+                        <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">★</button><br>
+                        {% else %}
+                            
+                            <button class='a-fav-button' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">☆</button><br>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+
+                        
+                        {% if question.author == request.user %}
+                            {% if question.correct_answer != answer %}
+                                <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Mark Answer as Correct</button>
+                            {% endif %}   
+                        {% endif %}
+                    </div> 
+                {% endfor %} 
+                </div>
+        {% else %}
+            <p id="no-answer">There are no answers for this question.</p>
+        {% endif %}
+        </div>
     </div>
-</div>
+</section>
 {% endblock %}
