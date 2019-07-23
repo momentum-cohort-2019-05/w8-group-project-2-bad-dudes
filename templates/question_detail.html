@@ -36,7 +36,7 @@
 </section>
 
 {% if request.user.is_authenticated %}
-<button id="showFormButton">Add an answer</button>
+<button class="add-answer-button" id="showFormButton"><span>Add an answer</span></button>
 
 <form action="" method="POST" hidden="hidden" id="answerForm">
     {% csrf_token %}
@@ -74,9 +74,9 @@
 
 
 <section class="section">
+
         <h2>Responses:</h2>
     <div class="answerbox answerbox2">
-    
 
         <div id="displayAnswers"></div>
         {% if question.answer_set.all %}
