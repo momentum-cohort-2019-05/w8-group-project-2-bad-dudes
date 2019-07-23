@@ -12,6 +12,7 @@
 <section class="section">
 <h1 id="q-title-area">
 
+<div class="qbox qbox2">
 {% if request.user.is_authenticated %}
     {% if question_is_favorited %}
         <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
@@ -20,10 +21,17 @@
     {% endif %}
 {% endif %}
 
-{{ question.title }}</h1>
-<p>Asked by: {{ question.author }}</p>
+{{ question.title }}
+</div></h1>
+
 <div class="questionbox">
-<p>{{ question.content |safe }}</p>
+<p>{{ question.content |safe }}
+<br>
+<br>
+Asked by: {{ question.author }}</p>
+
+
+
 </div>
 
 {% if request.user == question.author %}
