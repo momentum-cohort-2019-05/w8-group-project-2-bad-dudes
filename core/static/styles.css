@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Geostar|Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Bungee+Outline|Geostar|Pacifico|Bangers&display=swap');
 .base-header {
     vertical-align: center;
     background-color: orange;
     padding: 6px;
+    font-family: 'Bangers';
+    background-color: rgba(255,255,255, 0.4);
+    background-blend-mode: lighten;
 }
 
 body {
@@ -16,12 +19,21 @@ body {
     background-size: cover;
 }
 
+.login-area a {
+    color: black;
+}
+
 .title-text {
     color: red;
 }
 
 #qbox-header {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Bangers';
+}
+#qbox-header h1 {
+    font-size: 4rem;
+    text-shadow: 2px 2px red;
+    margin-bottom: 0px;
 }
 .question-display {
     display: flex;
