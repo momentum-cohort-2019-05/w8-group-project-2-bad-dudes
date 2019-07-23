@@ -81,6 +81,18 @@ body {
     align-items: flex-end;
 }
 
+.questionbox {
+    display:flex;
+    margin: 25px;
+    width: 70%;
+    height: auto;
+    background: rgba(247, 247, 247, .8);
+    border-width: 9px 6px 9px 5px;
+    border: solid white;
+    border-color: white; 
+    box-shadow: 10px 10px rgb(44, 44, 44);
+}
+
 .answer-display {
     display:flex;
     margin: 25px;
@@ -88,7 +100,7 @@ body {
     padding-left: 20px;
     width: 70%;
     height: auto;
-    background: rgba(247, 247, 247, 1);
+    background: rgba(247, 247, 247, .8);
     border-width: 9px 6px 9px 5px;
     border: solid white;
     border-color: white; 
@@ -127,10 +139,10 @@ body {
     padding-left: 20px;
     width: 70%;
     height: auto;
-    background: rgb(144, 238, 144, .8);
+    background: rgba(236, 205, 66, 0.8);
     border-width: 9px 6px 9px 5px;
-    border: solid green;
-    border-color: green; 
+    border: solid rgb(255, 209, 3);
+    border-color: rgb(255, 209, 3);
     box-shadow: 10px 10px rgb(44, 44, 44);
 }
 
