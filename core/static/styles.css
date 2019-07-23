@@ -49,6 +49,11 @@
     color: red;
 }
 
+.none-class {
+    font-family: 'Bangers';
+    font-size: 40px
+}
+
 body {
     background-image: url("http://static.comicvine.com/uploads/original/12/122233/3346578-3324924-fotoflexer_photo.jpg");
     background-color: rgba(255,255,255, 0.7);
