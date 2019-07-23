@@ -14,19 +14,17 @@
       </head>
       <body>
         <header class="base-header">
-            <div id="login-menu">
-              <div id="qbox-header">
-                <h1>Bad Dudes</h1>
-                <p>Comic Book Questions and Answers</p>
-              </div>
-              <div class="login-area">
-                {% if request.user.is_authenticated %}
+          <div id="v2-header-title">
+            <h1 id="v2-site-head">Bad Dudes</h1>
+            <p id="v2-header-label">Comic Book Questions and Answers</p>
+          </div>
+          <div id="v2-login-area">
+              {% if request.user.is_authenticated %}
                 <p id="login-name">Hi {{request.user}}</p> <a href="{% url 'home' %}">Home</a> · <a class="washed-blue" href="{% url 'profile' %}">Profile</a> · <a class="washed-blue" href="{% url 'account_logout' %}">Logout</a>
               {% else %}
                 <a href="{% url 'home' %}">Home</a> · <a class="washed-blue" href="{% url 'account_login' %}">Login</a> · <a class="washed-blue" href="{% url 'account_signup' %}">Register</a>
               {% endif %}
-              </div>
-            </div>
+          </div>
         </header>
         <div class="body-content">
         {% block content %}{% endblock %}</div>
