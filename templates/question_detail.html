@@ -62,7 +62,7 @@ Asked by: {{ question.author }}</p>
 
 <section class="section">
     {% if question.correct_answer != Null %}
-    <h2>Best Answer:</h2>
+    <h2 class="qdet-headers">Best Answer:</h2>
     <div class="correct-answer correct-answer2">
         <div class="actual-answer">
                 {% if question.answer_set.all %}
@@ -93,7 +93,7 @@ Asked by: {{ question.author }}</p>
 
 <section class="section">
 
-        <h2>Responses:</h2>
+        <h2 class="qdet-headers">Responses:</h2>
     <div class="answerbox answerbox2">
 
         <div id="displayAnswers"></div>
