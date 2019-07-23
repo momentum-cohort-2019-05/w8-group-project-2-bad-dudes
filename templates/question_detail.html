@@ -72,6 +72,16 @@ Asked by: {{ question.author }}</p>
                             {% if question.author == request.user %}
                                 <button class="makeCorrectLink" id="answer-{{ answer.pk }}" data-answerpk="{{ answer.pk }}" data-questionpk="{{ question.pk }}">Remove as correct answer</button>
                             {% endif %}
+
+                            {% if request.user.is_authenticated %}
+
+                            {% if answer.pk in favorited_answer_pk_list %}
+                                <button class='a-fav-button fav-star' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">★</button><br>
+                            {% else %}
+                            
+                            <button class='a-fav-button fav-star' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">☆</button><br>
+                            {% endif %}
+                        {% endif %}
                         {% endif %}
                     {% endfor %}
             {% endif %}
