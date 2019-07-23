@@ -4,18 +4,22 @@
 {% block content %}
 <a href="{% url 'new-question' %}">Add a New Question</a>
 
+<section class="section">
+    <h2>All Questions:</h2>
 
-<h2>All Questions:</h2>
-
-{% if question_list %}
-    {% for question in question_list %}
-    <div class="qdisplay">
-        <div class="question-display">
-            <a href="{{question.get_absolute_url}}"><strong>{{ question.title }}</strong></a> - Created by {{ question.author }} at {{ question.created_at}}
+    {% if question_list %}
+        {% for question in question_list %}
+        <div class="qdisplay">
+            <div class="box box2">
+                <a href="{{question.get_absolute_url}}" class="index-text"><strong>{{ question.title }}</strong></a>
+            </div>
         </div>
-    </div>
-    {% endfor %}
-{% else %}
-    <p>There are no questions.</p>
-{% endif %}
+        Created by {{ question.author }} at {{ question.created_at}}
+        <br>
+        <br>
+        {% endfor %}
+    {% else %}
+        <p>There are no questions.</p>
+    {% endif %}
+</section>
 {% endblock %}
