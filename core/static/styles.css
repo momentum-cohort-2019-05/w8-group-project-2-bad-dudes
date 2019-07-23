@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Bungee+Outline|Geostar|Pacifico|Bangers&display=swap');
 .base-header {
-
+    
     vertical-align: center;
     background-color: orange;
     padding: 6px;
@@ -206,11 +206,11 @@ body {
     background:#fff;
     border: solid black;
     border-color: black;
-
+    
 }
 
 .box2{
-  
+    
     width:70%;
     height: auto;
     background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)),
@@ -221,15 +221,15 @@ body {
     transform: rotate(-2deg);
 }
 
-  .index-text{
+.index-text{
     font-family: 'Bangers';
     color: white;
     padding: 5px;
     font-size: 3rem;
     text-shadow: 5px 5px black;
     letter-spacing: 2px;
-
-  }
+    
+}
 
 
 .response-title {
@@ -263,3 +263,59 @@ body {
     text-decoration: none;
 }
 
+
+
+svg.kapow-button-1{
+    width:370px;
+    height:150px;
+    display: block;
+    margin: auto;
+}
+
+svg.kapow-button .kapow-button-shape{
+    fill:#ff0; 
+    stroke: #000; 
+    stroke-width:2px; 
+    stroke-linejoin:miter; 
+    stroke-miterlimit: 12;  
+    
+    transition: transform .4s, fill .2s;
+}
+svg.kapow-button-1 .kapow-button-shape{
+    transform-origin: 125px 70px;
+    transform:scale(.9, .9);
+}
+
+svg.kapow-button .kapow-button-text{
+    filter:url(#kapow-text);
+    fill: #f00;
+    text-anchor: middle;
+    alignment-baseline: middle;
+    
+    font-family: Bangers;
+    font-size: 2.1em;
+    
+    letter-spacing:.1em;
+    word-spacing:.1em;
+    
+    transition: all .5s;
+}
+svg.kapow-button-1 .kapow-button-text{
+    transform: translate(125px, 75px) rotate(-12deg);
+}
+
+svg .kapow-button-group:hover{
+    cursor:pointer;
+}
+
+svg .kapow-button-group:hover .kapow-button-shape{
+    fill:#ddff33; 
+}
+svg.kapow-button-1 .kapow-button-group:hover .kapow-button-shape{
+    fill:#ddff33; 
+    transform: scale(1);
+}
+
+svg.kapow-button .kapow-button-group:hover .kapow-button-text{
+    letter-spacing:.15em; 
+}
