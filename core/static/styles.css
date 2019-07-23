@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Bungee+Outline|Geostar|Pacifico|Bangers&display=swap');
 .base-header {
-
+    
     vertical-align: center;
     background-color: orange;
     padding: 6px;
@@ -8,9 +8,34 @@
     background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)), url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    
+    padding-left:20px;
+    padding-right:20px;
+
 }
 
+#new-q-form {
+    font-family: 'Bangers';
+    color:black;
+    /* color:white; */
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;  */
+    /* text-shadow: 5px 5px black; */
+}
+
+#new-q-title{
+    width:338px;
+    border : 2px solid black;
+}
+
+#new-q-content{
+    border : 2px solid black;
+}
+
+#new-q-button{
+    border : 2px solid black;
+    padding-right:9px;
+    padding-top:2px;
+    color: black;
+}
 
 body {
     background-image: url("http://static.comicvine.com/uploads/original/12/122233/3346578-3324924-fotoflexer_photo.jpg");
@@ -34,11 +59,13 @@ body {
     font-family: 'Bangers';
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; 
+    /* text-shadow: 3px 3px black; */
+
 }
 #qbox-header h1 {
     color: white;
     font-size: 4rem;
-    text-shadow: 2px 2px black;
+    text-shadow: 5px 5px black;
     margin-bottom: 0px;
 }
 /* .question-display {
@@ -48,6 +75,8 @@ body {
     width: 70%;
     height: auto;
 } */
+
+
 
 .question-header {
     border-bottom: 5px solid #FFA500;
@@ -121,14 +150,17 @@ body {
     padding-left: 0px;
 }
 
+
 .answer-display a {
     font-family: 'Bangers';
     font-size: 1.5rem;
+
 }
 
 .qdisplay{
     display: flex;
     padding: 30px 0 ;
+    padding-bottom: 0px;
 }
 
 .a-fav-button{
@@ -177,11 +209,11 @@ body {
     background:#fff;
     border: solid black;
     border-color: black;
-
+    
 }
 
 .box2{
-  
+    
     width:70%;
     height: auto;
     background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)),
@@ -193,22 +225,21 @@ body {
 
 }
 
-.box2 b{
-  
-   color: white;
-    
+.box2 b{  
+   color: white;   
 }
 
 
-  .index-text{
+.index-text{
+
     font-family: 'Bangers';
     color: white;
     padding: 5px;
     font-size: 3rem;
     text-shadow: 5px 5px black;
     letter-spacing: 2px;
-
-  }
+    
+}
 
 
 .response-title {
@@ -242,6 +273,7 @@ body {
     text-decoration: none;
 }
 
+
 .qbox{
     display: flex;
     margin:25px;
@@ -264,4 +296,61 @@ body {
     background-size: cover;
     border-width: 5px;
     box-shadow: 10px 10px rgb(44, 44, 44);
+
+
+
+svg.kapow-button-1{
+    width:370px;
+    height:150px;
+    display: block;
+    margin: auto;
+}
+
+svg.kapow-button .kapow-button-shape{
+    fill:#ff0; 
+    stroke: #000; 
+    stroke-width:2px; 
+    stroke-linejoin:miter; 
+    stroke-miterlimit: 12;  
+    
+    transition: transform .4s, fill .2s;
+}
+svg.kapow-button-1 .kapow-button-shape{
+    transform-origin: 125px 70px;
+    transform:scale(.9, .9);
+}
+
+svg.kapow-button .kapow-button-text{
+    filter:url(#kapow-text);
+    fill: #f00;
+    text-anchor: middle;
+    alignment-baseline: middle;
+    
+    font-family: Bangers;
+    font-size: 2.1em;
+    
+    letter-spacing:.1em;
+    word-spacing:.1em;
+    
+    transition: all .5s;
+}
+svg.kapow-button-1 .kapow-button-text{
+    transform: translate(125px, 75px) rotate(-12deg);
+}
+
+svg .kapow-button-group:hover{
+    cursor:pointer;
+}
+
+svg .kapow-button-group:hover .kapow-button-shape{
+    fill:#ddff33; 
+}
+svg.kapow-button-1 .kapow-button-group:hover .kapow-button-shape{
+    fill:#ddff33; 
+    transform: scale(1);
+}
+
+svg.kapow-button .kapow-button-group:hover .kapow-button-text{
+    letter-spacing:.15em; 
+
 }
