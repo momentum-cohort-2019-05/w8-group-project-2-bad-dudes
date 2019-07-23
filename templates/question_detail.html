@@ -88,15 +88,14 @@
                         <p><strong>{{answer.content}}</strong> - {{answer.created_at}} by {{answer.author}}
                         
                             
-                        {% if question.author == request.user %}
+                        {% if request.user.is_authenticated %}
 
-                        {% if answer.pk in favorited_answer_pk_list %}
-                            
-                        <button class='a-fav-button fav-star' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">★</button><br>
-                        {% else %}
+                            {% if answer.pk in favorited_answer_pk_list %}
+                                <button class='a-fav-button fav-star' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">★</button><br>
+                            {% else %}
                             
                             <button class='a-fav-button fav-star' id="fav-{{ answer.pk }}" data-answerpk="{{ answer.pk }}">☆</button><br>
-                        {% endif %}
+                            {% endif %}
                         {% endif %}
                         {% endif %}
 
