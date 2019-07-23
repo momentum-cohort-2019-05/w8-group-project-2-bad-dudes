@@ -10,7 +10,10 @@
     background-size: cover;
     padding-left:20px;
     padding-right:20px;
-
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 #new-q-form {
@@ -47,27 +50,29 @@ body {
     background-size: cover;
 }
 
-.login-area a {
-    color: white;
-}
-
 .title-text {
     color: red;
 }
 
-#qbox-header, .login-area {
+/* #qbox-header, .login-area {
     font-family: 'Bangers';
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; 
-    /* text-shadow: 3px 3px black; */
 
-}
-#qbox-header h1 {
+} */
+#v2-site-head {
     color: white;
     font-size: 4rem;
     text-shadow: 5px 5px black;
     margin-bottom: 0px;
 }
+
+/* #qbox-header h1 {
+    color: white;
+    font-size: 4rem;
+    text-shadow: 5px 5px black;
+    margin-bottom: 0px;
+} */
 /* .question-display {
     display: flex;
     border: 5px solid #FFA500;
@@ -109,15 +114,14 @@ body {
 
 
 #login-name {
-    text-align: right;
     margin-bottom: 0px;
 }
 
-#login-menu {
+/* #login-menu {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-}
+} */
 
 .questionbox {
     display:flex;
