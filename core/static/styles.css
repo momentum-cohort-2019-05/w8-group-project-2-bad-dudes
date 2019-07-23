@@ -16,7 +16,9 @@
 #new-q-form {
     font-family: 'Bangers';
     color:black;
+    /* color:white; */
     /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;  */
+    /* text-shadow: 5px 5px black; */
 }
 
 #new-q-title{
@@ -57,6 +59,8 @@ body {
     font-family: 'Bangers';
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; 
+    /* text-shadow: 3px 3px black; */
+
 }
 #qbox-header h1 {
     color: white;
@@ -140,9 +144,14 @@ body {
     padding-left: 0px;
 }
 
+.q-index-created-by {
+    padding-left:25px;
+}
+
 .qdisplay{
     display: flex;
     padding: 30px 0 ;
+    padding-bottom: 0px;
 }
 
 .a-fav-button{

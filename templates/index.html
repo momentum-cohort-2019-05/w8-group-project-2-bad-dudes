@@ -13,7 +13,7 @@
                 <a href="{{question.get_absolute_url}}" class="index-text"><strong>{{ question.title }}</strong></a>
             </div>
         </div>
-        Created by {{ question.author }} at {{ question.created_at}}
+        <span class="q-index-created-by">Created by {{ question.author }} at {{ question.created_at}}</span>
         <br>
         <br>
         {% endfor %}
