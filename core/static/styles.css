@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Bungee+Outline|Geostar|Pacifico|Bangers&display=swap');
 .base-header {
-vertical-align: center;
-background-color: orange;
-padding: 6px;
-font-family: 'Bangers';
-background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)), url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg")}
+
+    vertical-align: center;
+    background-color: orange;
+    padding: 6px;
+    font-family: 'Bangers';
+    background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)), url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
 
 body {
     background-image: url("http://static.comicvine.com/uploads/original/12/122233/3346578-3324924-fotoflexer_photo.jpg");
     background-color: rgba(255,255,255, 0.7);
     background-blend-mode: lighten;
-    
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -36,13 +41,18 @@ body {
     text-shadow: 2px 2px black;
     margin-bottom: 0px;
 }
-.question-display {
+/* .question-display {
     display: flex;
-    border-radius: 25px;
     border: 5px solid #FFA500;
     padding: 20px;
-    width: auto;
+    width: 70%;
     height: auto;
+} */
+
+.question-header {
+    border-bottom: 5px solid #FFA500;
+    width: 80%;
+    
 }
 
 #q-title-area{
@@ -75,16 +85,30 @@ body {
     align-items: flex-end;
 }
 
-.answer-display {
-    display: flex;
-    margin-bottom: 30px;
-    display: block;
-    margin-top: 2px;
-    
-    border-radius: 25px;
-    
-    width: auto;
+.questionbox {
+    display:flex;
+    margin: 25px;
+    width: 70%;
     height: auto;
+    background: rgba(247, 247, 247, .8);
+    border-width: 9px 6px 9px 5px;
+    border: solid white;
+    border-color: white; 
+    box-shadow: 10px 10px rgb(44, 44, 44);
+}
+
+.answer-display {
+    display:flex;
+    margin: 25px;
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 70%;
+    height: auto;
+    background: rgba(247, 247, 247, .8);
+    border-width: 9px 6px 9px 5px;
+    border: solid white;
+    border-color: white; 
+    box-shadow: 10px 10px rgb(44, 44, 44);
 }
 
 .answer-display p {
@@ -113,15 +137,60 @@ body {
 }
 
 .correct-answer{
-    display: flex;
-    border: 10px solid green;
-    width: 80%;
-    padding: 30px 0px;
+    display:flex;
+    margin: 25px;
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 70%;
+    height: auto;
+    background: rgba(236, 205, 66, 0.8);
+    border-width: 9px 6px 9px 5px;
+    border: solid rgb(255, 209, 3);
+    border-color: rgb(255, 209, 3);
+    box-shadow: 10px 10px rgb(44, 44, 44);
 }
+
 
 .section{
     padding: 30px 0px;
 }
+
+
+.box{
+    display: flex;
+    margin:25px;
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 100px;
+    height: 250px;
+    background:#fff;
+    border: solid black;
+    border-color: black;
+
+}
+
+.box2{
+  
+    width:70%;
+    height: auto;
+    background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)),
+    url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg");
+    background-size: cover;
+    border-width: 3px 3px 5px 5px;
+    border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+    transform: rotate(-2deg);
+}
+
+  .index-text{
+    font-family: 'Bangers';
+    color: white;
+    padding: 5px;
+    font-size: 3rem;
+    text-shadow: 5px 5px black;
+    letter-spacing: 2px;
+
+  }
+
 
 .response-title {
     font-family: 'Bangers';
@@ -153,3 +222,4 @@ body {
     background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
     text-decoration: none;
 }
+

@@ -9,7 +9,9 @@
 
 {% block content %}
 <br>
+<section class="section">
 <h1 id="q-title-area">
+
 {% if request.user.is_authenticated %}
     {% if question_is_favorited %}
         <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
@@ -17,9 +19,12 @@
         <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
     {% endif %}
 {% endif %}
+
 {{ question.title }}</h1>
 <p>Asked by: {{ question.author }}</p>
+<div class="questionbox">
 <p>{{ question.content |safe }}</p>
+</div>
 
 {% if request.user == question.author %}
     <div id="delete-div">
@@ -28,7 +33,7 @@
         <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Delete Question</a>
     </div>
 {% endif %}
-
+</section>
 
 {% if request.user.is_authenticated %}
 <button class="add-answer-button" id="showFormButton"><span>Add an answer</span></button>
@@ -49,9 +54,9 @@
 
 <section class="section">
     {% if question.correct_answer != Null %}
-    <div class="correct-answer">
+    <h2>Best Answer:</h2>
+    <div class="correct-answer correct-answer2">
         <div class="actual-answer">
-            <h2>Correct Answer:</h2>
                 {% if question.answer_set.all %}
                     {% for answer in question.answer_set.all %} 
                         {% if question.correct_answer == answer %}
@@ -69,8 +74,9 @@
 
 
 <section class="section">
-    <div class="answerClass">
-        <h2 class="response-title">Responses:</h2>
+
+        <h2>Responses:</h2>
+    <div class="answerbox answerbox2">
 
         <div id="displayAnswers"></div>
         {% if question.answer_set.all %}
