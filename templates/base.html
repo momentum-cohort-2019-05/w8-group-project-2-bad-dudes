@@ -17,7 +17,7 @@
             <div id="login-menu">
               <div id="qbox-header">
                 <h1>Bad Dudes </h1>
-                <p>Comics Q & A</p>
+                <p>Comic Book Questions and Answers</p>
               </div>
               <div class="login-area">
                 {% if request.user.is_authenticated %}
@@ -36,7 +36,7 @@
               </ul>
            {% endblock %}
             </div>
-            <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
+            <div class="col-sm-10 content">{% block content %}{% endblock %}</div>
           </div>
         </div>
       </body>
