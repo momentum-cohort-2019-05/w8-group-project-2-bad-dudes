@@ -79,6 +79,22 @@ body {
     margin-bottom: 0px;
 }
 
+#v2-header-label {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; 
+}
+
+#v2-login-area {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#v2-login-area a{
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+
 /* #qbox-header h1 {
     color: white;
     font-size: 4rem;
