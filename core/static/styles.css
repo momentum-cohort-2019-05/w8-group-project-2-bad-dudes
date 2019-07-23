@@ -54,6 +54,7 @@ body {
     color: orange;
     border-width: 0px;
     font-size: 1.5rem;
+    background-color: rgba(255,255,255,0);
 }
 
 .fav-star:focus,.fav-star:active {
