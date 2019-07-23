@@ -1,20 +1,19 @@
-<<<<<<< HEAD
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Geostar|Pacifico|Bangers&display=swap');
-=======
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Bungee+Outline|Geostar|Pacifico|Bangers&display=swap');
->>>>>>> 2a2ac14f1930faaeab8ed4cba6cd3b2ab2d816fb
 .base-header {
     vertical-align: center;
     background-color: orange;
     padding: 6px;
     font-family: 'Bangers';
-    background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)), url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg")}
+    background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)), url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
 
 body {
     background-image: url("http://static.comicvine.com/uploads/original/12/122233/3346578-3324924-fotoflexer_photo.jpg");
     background-color: rgba(255,255,255, 0.7);
     background-blend-mode: lighten;
-
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -158,7 +157,6 @@ body {
     height: auto;
     background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)),
     url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg");
-
     background-size: cover;
     border-width: 3px 3px 5px 5px;
     border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
@@ -169,7 +167,7 @@ body {
     font-family: 'Bangers';
     color: white;
     padding: 5px;
-    font-size: 80px;
+    font-size: 3rem;
     text-shadow: 5px 5px black;
     letter-spacing: 2px;
 
