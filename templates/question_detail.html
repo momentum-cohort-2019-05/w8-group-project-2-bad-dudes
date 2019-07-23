@@ -49,9 +49,9 @@
 
 <section class="section">
     {% if question.correct_answer != Null %}
-    <div class="correct-answer">
+    <h2>Best Answer:</h2>
+    <div class="correct-answer correct-answer2">
         <div class="actual-answer">
-            <h2>Correct Answer:</h2>
                 {% if question.answer_set.all %}
                     {% for answer in question.answer_set.all %} 
                         {% if question.correct_answer == answer %}
@@ -69,8 +69,9 @@
 
 
 <section class="section">
-    <div class="answerClass">
         <h2>Responses:</h2>
+    <div class="answerbox answerbox2">
+    
 
         <div id="displayAnswers"></div>
         {% if question.answer_set.all %}

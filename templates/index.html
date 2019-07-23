@@ -20,9 +20,12 @@
         {% for question in question_list %}
         <div class="qdisplay">
             <div class="box box2">
-                <a href="{{question.get_absolute_url}}"><strong>{{ question.title }}</strong></a> - Created by {{ question.author }} at {{ question.created_at}}
+                <a href="{{question.get_absolute_url}}" class="index-text"><strong>{{ question.title }}</strong></a>
             </div>
         </div>
+        Created by {{ question.author }} at {{ question.created_at}}
+        <br>
+        <br>
         {% endfor %}
     {% else %}
         <p>There are no questions.</p>
