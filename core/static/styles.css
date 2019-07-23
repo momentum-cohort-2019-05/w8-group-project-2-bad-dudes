@@ -14,6 +14,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: flex-end;
+    /* align-items: center; */
 }
 
 #new-q-form {
@@ -100,6 +101,7 @@ body {
     text-align: right;
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    flex-grow: 2;
 }
 
 #v2-login-area a{
