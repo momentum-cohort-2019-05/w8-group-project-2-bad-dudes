@@ -224,7 +224,7 @@ body {
 }
 
 .actual-answer{
-    padding: 20px 0 auto auto;
+    padding: 10px 0 auto auto;
     margin: 20px;
     width: auto;
     height: auto; 
@@ -234,7 +234,6 @@ body {
 .correct-answer{
     display:flex;
     margin: 25px;
-    padding-top: 10px;
     padding-left: 20px;
     width: 70%;
     height: auto;
