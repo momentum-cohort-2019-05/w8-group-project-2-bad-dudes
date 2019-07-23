@@ -38,13 +38,13 @@ Asked by: {{ question.author }}</p>
     <div id="delete-div">
         <button data-questionpk = "{{ question.pk }}" id="delete-q-button">Delete this question</button>
         <br>
-        <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Delete Question</a>
+        <a id="perm-delete-link" href="{% url 'delete-question' question_pk=question.pk %}" hidden="hidden">Permanently delete this question and all answers?</a>
     </div>
 {% endif %}
 </section>
 
 {% if request.user.is_authenticated %}
-<button class="add-answer-button" id="showFormButton"><span>Add an answer</span></button>
+<button id="showFormButton"><span>Add an answer</span></button>
 
 <form action="" method="POST" hidden="hidden" id="answerForm">
     {% csrf_token %}
