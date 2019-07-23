@@ -13,15 +13,17 @@
 <h1 id="q-title-area">
 
 <div class="qbox qbox2">
-{% if request.user.is_authenticated %}
-    {% if question_is_favorited %}
-        <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
-    {% else %}
-        <button class="fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
-    {% endif %}
-{% endif %}
+
 
 {{ question.title }}
+
+{% if request.user.is_authenticated %}
+    {% if question_is_favorited %}
+        <button class="a-fav-button fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">★</button>
+    {% else %}
+        <button class="a-fav-button fav-star" id='q-fav-button' data-questionpk="{{ question.pk }}">☆</button>
+    {% endif %}
+{% endif %}
 </div></h1>
 
 <div class="questionbox">
