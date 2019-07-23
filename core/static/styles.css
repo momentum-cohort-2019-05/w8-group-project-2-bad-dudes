@@ -8,9 +8,32 @@
     background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)), url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    
+    padding-left:20px;
+    padding-right:20px;
+
 }
 
+#new-q-form {
+    font-family: 'Bangers';
+    color:black;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;  */
+}
+
+#new-q-title{
+    width:338px;
+    border : 2px solid black;
+}
+
+#new-q-content{
+    border : 2px solid black;
+}
+
+#new-q-button{
+    border : 2px solid black;
+    padding-right:9px;
+    padding-top:2px;
+    color: black;
+}
 
 body {
     background-image: url("http://static.comicvine.com/uploads/original/12/122233/3346578-3324924-fotoflexer_photo.jpg");
@@ -38,7 +61,7 @@ body {
 #qbox-header h1 {
     color: white;
     font-size: 4rem;
-    text-shadow: 2px 2px black;
+    text-shadow: 5px 5px black;
     margin-bottom: 0px;
 }
 /* .question-display {
@@ -48,6 +71,8 @@ body {
     width: 70%;
     height: auto;
 } */
+
+
 
 .question-header {
     border-bottom: 5px solid #FFA500;
