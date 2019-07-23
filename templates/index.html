@@ -41,15 +41,16 @@
 </div>
 
 <section class="section">
-    <h2>All Questions:</h2>
     {% if question_list %}
         {% for question in question_list %}
         <div class="qdisplay">
             <div class="box box2">
-                <a href="{{question.get_absolute_url}}" class="index-text"><strong>{{ question.title }}</strong></a>
+                <p><a href="{{question.get_absolute_url}}" class="index-text"><strong>{{ question.title }}</strong></a>
+                <br>
+                <b>Created by {{ question.author }} at {{ question.created_at}}</b></p>
             </div>
         </div>
-        <span class="q-index-created-by">Created by {{ question.author }} at {{ question.created_at}}</span>
+
         <br>
         <br>
         {% endfor %}
