@@ -5,6 +5,21 @@
     padding: 6px;
 }
 
+body {
+    background-image: url("http://static.comicvine.com/uploads/original/12/122233/3346578-3324924-fotoflexer_photo.jpg");
+    background-color: rgba(255,255,255, 0.7);
+    background-blend-mode: lighten;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title-text {
+    color: red;
+}
+
 #qbox-header {
     font-family: 'Pacifico', cursive;
 }
