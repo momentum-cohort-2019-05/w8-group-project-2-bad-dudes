@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Geostar|Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bangers&display=swap');
 .base-header {
     vertical-align: center;
     background-color: orange;
@@ -34,6 +34,7 @@ body {
 
 #q-title-area{
     display:flex;
+    font-family: 'Bangers';
 }
 
 .fav-star {
@@ -105,3 +106,8 @@ body {
 .section{
     padding: 30px 0px;
 }
+
+.response-title {
+    font-family: 'Bangers';
+}
+
