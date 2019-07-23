@@ -55,6 +55,11 @@ body {
     color: red;
 }
 
+#qbox-header{
+    display:flex;
+    flex-direction: column;
+}
+
 #qbox-header, .login-area {
     font-family: 'Bangers';
     color: white;
@@ -67,6 +72,7 @@ body {
     font-size: 4rem;
     text-shadow: 5px 5px black;
     margin-bottom: 0px;
+    display:flex;
 }
 /* .question-display {
     display: flex;

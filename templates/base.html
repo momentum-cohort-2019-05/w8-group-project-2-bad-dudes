@@ -22,9 +22,9 @@
               <div class="login-area">
                 {% if request.user.is_authenticated %}
                 <p id="login-name">Hi {{request.user}}</p> <a href="{% url 'home' %}">Home</a> · <a class="washed-blue" href="{% url 'profile' %}">Profile</a> · <a class="washed-blue" href="{% url 'account_logout' %}">Logout</a>
-              {% else %}
+                {% else %}
                 <a href="{% url 'home' %}">Home</a> · <a class="washed-blue" href="{% url 'account_login' %}">Login</a> · <a class="washed-blue" href="{% url 'account_signup' %}">Register</a>
-              {% endif %}
+                {% endif %}
               </div>
             </div>
         </header>
