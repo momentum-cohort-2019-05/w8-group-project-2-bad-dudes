@@ -58,6 +58,11 @@ body {
 #q-title-area{
     display:flex;
     font-family: 'Bangers';
+    color: white;
+    padding: 5px;
+    font-size: 3rem;
+    text-shadow: 5px 5px black;
+    letter-spacing: 2px;
 }
 
 .fav-star {
@@ -99,6 +104,7 @@ body {
 
 .answer-display {
     display:flex;
+    align-items: center;
     margin: 25px;
     padding-top: 10px;
     padding-left: 20px;
@@ -113,6 +119,11 @@ body {
 
 .answer-display p {
     padding-left: 0px;
+}
+
+.answer-display a {
+    font-family: 'Bangers';
+    font-size: 1.5rem;
 }
 
 .qdisplay{
@@ -179,7 +190,15 @@ body {
     border-width: 3px 3px 5px 5px;
     border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
     transform: rotate(-2deg);
+
 }
+
+.box2 b{
+  
+   color: white;
+    
+}
+
 
   .index-text{
     font-family: 'Bangers';
@@ -223,3 +242,26 @@ body {
     text-decoration: none;
 }
 
+.qbox{
+    display: flex;
+    margin:25px;
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 100px;
+    height: 250px;
+    background:#fff;
+    border: solid black;
+    border-color: black;
+
+}
+
+.qbox2{
+  
+    width:70%;
+    height: auto;
+    background-image: linear-gradient(to bottom, rgba(36, 2, 36, 0.77), rgba(117, 19, 93, 0.73)),
+    url("http://www.sclance.com/backgrounds/comic-book-polka-dot-background/comic-book-polka-dot-background_612694.jpg");
+    background-size: cover;
+    border-width: 5px;
+    box-shadow: 10px 10px rgb(44, 44, 44);
+}
