@@ -118,7 +118,7 @@ answer_submit.addEventListener('click', function(event){
     fetch(postAnswer( questionPk, answerInput ))
     .then (response => response.json())
     .then (function (data){
-        //location.reload()
+        window.location.reload()
         const newAnswer = document.createElement('p')
         newAnswer.innerHTML = `
         
