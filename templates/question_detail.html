@@ -58,7 +58,7 @@ Asked by: {{ question.author }}</p>
     <button id="answerSubmit" class="answer-q-button" data-questionpk="{{ question.pk }}">Submit</button>
 </form>
 {% else %}
-    <p>You need to <a class="washed-blue" href="{% url 'account_login' %}">login to your account</a> in order to submit an answer.</p>
+    <p class="answerform">You need to <a class="washed-blue" href="{% url 'account_login' %}">login to your account</a> in order to submit an answer.</p>
 {% endif %}
 
 
